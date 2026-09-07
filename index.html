@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ludovic Delot — Business Intelligence &amp; Data Analyst / Content Producer</title>
+<meta name="description" content="Ludovic Delot is a Business Intelligence &amp; Data Analyst (LVMH, Groupe SEB, El Puerto de Liverpool) and festival content producer (Live Nation/OCESA, Tomorrowland Lab of Tomorrow, Delot Media). MSc International Management &amp; Finance, Rennes School of Business. Based in Mexico City.">
+<meta name="author" content="Ludovic Delot">
+<meta name="keywords" content="Ludovic Delot, Business Intelligence, Data Analyst, Power BI, LVMH, Groupe SEB, El Puerto de Liverpool, Rennes School of Business, Tecnológico de Monterrey, Live Nation, OCESA, Tomorrowland, Delot Media, Mexico City">
+<link rel="canonical" href="https://ludodelot.github.io/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Ludovic Delot — Business Intelligence & Data Analyst / Content Producer">
+<meta property="og:description" content="BI & Data Analyst at LVMH · Previously Groupe SEB, El Puerto de Liverpool · Festival photographer & content producer for Live Nation/OCESA and Tomorrowland · MSc, Rennes School of Business.">
+<meta property="og:image" content="https://ludodelot.github.io/assets/portrait.jpg">
+<meta property="og:url" content="https://ludodelot.github.io/">
+<meta property="profile:first_name" content="Ludovic">
+<meta property="profile:last_name" content="Delot">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ludovic Delot — Business Intelligence & Data Analyst / Content Producer">
+<meta name="twitter:description" content="BI & Data Analyst at LVMH · Festival photographer & content producer for Live Nation/OCESA and Tomorrowland · MSc, Rennes School of Business.">
+<meta name="twitter:image" content="https://ludodelot.github.io/assets/portrait.jpg">
+
+<!-- Structured data: schema.org Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ludovic Delot",
+  "alternateName": "Ludovic Delot Bravo",
+  "url": "https://ludodelot.github.io/",
+  "image": "https://ludodelot.github.io/assets/portrait.jpg",
+  "jobTitle": "Business Intelligence & Data Analyst",
+  "description": "Business Intelligence & Data Analyst at LVMH, with prior experience at Groupe SEB and El Puerto de Liverpool. Also a festival photographer and content producer for Live Nation/OCESA and Tomorrowland's Lab of Tomorrow, and founder of Delot Media.",
+  "email": "mailto:ludovicdelot99@gmail.com",
+  "nationality": [
+    { "@type": "Country", "name": "Mexico" },
+    { "@type": "Country", "name": "France" }
+  ],
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Mexico City, Mexico"
+  },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "LVMH",
+    "sameAs": "https://www.linkedin.com/company/lvmh"
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Rennes School of Business",
+      "sameAs": "https://www.linkedin.com/school/renneschoolofbusiness/"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Tecnológico de Monterrey",
+      "sameAs": "https://www.linkedin.com/school/tecdemonterrey/"
+    }
+  ],
+  "knowsAbout": [
+    "Business Intelligence", "Power BI", "Data Analysis", "DAX", "SQL", "Python",
+    "Supply Chain Analytics", "CPFR", "RPA", "KPI Governance",
+    "Photography", "Videography", "Content Marketing", "Festival Production"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/delot/",
+    "https://github.com/ludodelot"
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --navy: #071F3F;
+    --navy-2: #0B3C89;
+    --blue: #1F6FB2;
+    --blue-2: #2E86DE;
+    --blue-light: #4A90D9;
+    --sky: #8FA8C9;
+    --ink: #17233A;
+    --ink-soft: #4B5B78;
+    --bg: #FAFBFD;
+    --card: #FFFFFF;
+    --border: #E3E9F2;
+    --accent: #0A66C2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0A1220;
+      --card: #101B30;
+      --ink: #E8EEF7;
+      --ink-soft: #9FB2CE;
+      --border: #1F3A66;
+      --sky: #7E93B8;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--blue-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, var(--blue) 100%);
+    color: #EAF1FB;
+    padding: 72px 24px 88px;
+    text-align: center;
+  }
+  .hero img.portrait {
+    width: 148px; height: 148px; border-radius: 50%;
+    object-fit: cover; border: 4px solid rgba(255,255,255,0.25);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  }
+  .hero h1 { font-size: 2.4rem; margin: 20px 0 6px; letter-spacing: -0.02em; }
+  .hero .tagline { font-size: 1.15rem; color: #C7D7EE; margin: 0 0 22px; }
+  .hero .location { color: #9FB6D8; font-size: 0.95rem; margin-bottom: 26px; }
+  .hero .links a {
+    display: inline-block; margin: 0 8px 8px;
+    padding: 9px 18px; border-radius: 999px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25);
+    color: #fff; font-weight: 600; font-size: 0.92rem;
+  }
+  .hero .links a:hover { background: rgba(255,255,255,0.18); text-decoration: none; }
+
+  .wrap { max-width: 880px; margin: -48px auto 0; padding: 0 20px 80px; position: relative; }
+
+  section.card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 34px 36px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(10,20,40,0.06);
+  }
+  section.card h2 {
+    font-size: 1.35rem; margin: 0 0 18px; color: var(--ink);
+    display: flex; align-items: center; gap: 10px;
+  }
+  section.card h2 .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--blue-2); display: inline-block;
+  }
+  .lead { font-size: 1.05rem; color: var(--ink-soft); }
+  .lead strong { color: var(--ink); }
+
+  .track-label {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--blue); background: rgba(31,111,178,0.1);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 6px;
+  }
+
+  .entry { padding: 16px 0; border-top: 1px solid var(--border); }
+  .entry:first-of-type { border-top: none; padding-top: 4px; }
+  .entry h3 { margin: 0 0 2px; font-size: 1.05rem; }
+  .entry .meta { color: var(--ink-soft); font-size: 0.88rem; margin-bottom: 8px; }
+  .entry ul { margin: 8px 0 0; padding-left: 20px; }
+  .entry li { margin-bottom: 5px; color: var(--ink-soft); font-size: 0.95rem; }
+  .entry li strong { color: var(--ink); }
+  .entry .skills { margin-top: 8px; font-size: 0.82rem; color: var(--sky); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .pill-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .pill {
+    background: rgba(31,111,178,0.08); color: var(--blue-2);
+    border: 1px solid rgba(31,111,178,0.2);
+    padding: 5px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 600;
+  }
+
+  .projects { display: grid; gap: 14px; }
+  .project {
+    border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  }
+  .project a.name { font-weight: 700; font-size: 0.98rem; }
+  .project .desc { color: var(--ink-soft); font-size: 0.9rem; }
+
+  footer {
+    text-align: center; padding: 40px 20px 60px; color: var(--ink-soft); font-size: 0.88rem;
+  }
+  footer a { color: var(--blue-2); font-weight: 600; }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.85rem; margin-top: 10px; }
+  .toc a { color: #D7E4F5; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="portrait" src="assets/portrait.jpg" alt="Portrait of Ludovic Delot">
+  <h1>Ludovic Delot</h1>
+  <p class="tagline">Business Intelligence &amp; Data Analyst · Content Producer</p>
+  <p class="location">📍 Mexico City, Mexico · 🇲🇽 🇫🇷 Dual national</p>
+  <div class="links">
+    <a href="https://www.linkedin.com/in/delot/">LinkedIn</a>
+    <a href="https://github.com/ludodelot">GitHub</a>
+    <a href="mailto:ludovicdelot99@gmail.com">Email</a>
+  </div>
+  <div class="toc">
+    <a href="#about">About</a>
+    <a href="#experience-bi">BI &amp; Data</a>
+    <a href="#experience-creative">Content &amp; Media</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="card" id="about">
+    <h2><span class="dot"></span>About</h2>
+    <p class="lead">
+      <strong>Ludovic Delot</strong> is a Business Intelligence &amp; Data Analyst currently working as
+      <strong>Data &amp; BI Intern at <a href="https://www.linkedin.com/company/lvmh">LVMH</a></strong>,
+      where he scaled a reporting product from 4 to 20+ Power BI dashboards on a 25-table data model he designed,
+      standardizing KPIs across Marketing, Commercial, Finance and IT teams. Before LVMH, he worked in CPFR
+      supply-chain forecasting across 25,000+ SKU-store combinations at
+      <a href="https://www.linkedin.com/company/groupe-seb">Groupe SEB</a>, and led RPA/automation ROI evaluation
+      at <a href="https://www.linkedin.com/company/elpuertodeliverpool">El Puerto de Liverpool</a>.
+    </p>
+    <p class="lead">
+      In parallel, he runs a second professional track in content production — festival photography for
+      <a href="https://www.linkedin.com/company/live-nation">Live Nation</a>/<a href="https://www.linkedin.com/company/ocesa">OCESA</a>
+      (Vive Latino, Festival Arre), Content Marketing Producer for
+      <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland's</a> Lab of Tomorrow, and his own
+      studio, <strong>Delot Media</strong>, founded in 2019 with 160+ clients served.
+    </p>
+    <p class="lead">
+      He holds an <strong>MSc in International Management &amp; Finance</strong> from
+      <a href="https://www.linkedin.com/school/renneschoolofbusiness/">Rennes School of Business</a> (Triple Crown
+      accredited: AACSB, EQUIS, AMBA) and a <strong>BSc in Business Intelligence</strong> from
+      <a href="https://www.linkedin.com/school/tecdemonterrey/">Tecnológico de Monterrey</a>. Based in Mexico City,
+      with dual Mexican/French nationality.
+    </p>
+  </section>
+
+  <section class="card" id="experience-bi">
+    <h2><span class="dot"></span>Business Intelligence &amp; Data — Experience</h2>
+
+    <div class="entry">
+      <span class="track-label">LVMH · Luxury / Beauty</span>
+      <h3>Data &amp; Business Intelligence (Power BI) Intern</h3>
+      <div class="meta">Iberia &amp; Mexico + Global Dashboards · Madrid, Spain · Jun 2026 – present</div>
+      <ul>
+        <li>Support BI project management across international Business, Data, IT, Beauty Tech and Business Analyst teams — coordinating requirements, KPI definitions, and production delivery.</li>
+        <li>Document entity-relationship models across Google Cloud Platform and SharePoint sources; standardize KPI definitions, business rules and data quality controls.</li>
+        <li>Build DAX measures and Python ETL automation; use Microsoft Copilot for AI-assisted model validation.</li>
+        <li><strong>Led training for 3 people</strong> to automate the UK ETL process.</li>
+      </ul>
+      <div class="skills">Power BI · DAX · SQL · Python · Entity-Relationship Modeling · Microsoft Copilot</div>
+    </div>
+
+    <div class="entry">
+      <h3>Commercial Business Analyst Trainee (Remote)</h3>
+      <div class="meta">France, managing Mexico's BI operation · Aug 2025 – Jun 2026</div>
+      <ul>
+        <li>Led the <strong>Excel-to-Power BI transformation</strong> for Loewe and Acqua di Parma, replacing manual workflows with a self-service BI product.</li>
+        <li><strong>Scaled the product from 4 to 20+ automated Power BI dashboards</strong>, establishing Power BI as Mexico's official single source of truth.</li>
+        <li>Designed a <strong>25-table entity-relationship model</strong> connecting sell-out, stock, e-commerce, POS, retailer data, forecasts and quotas.</li>
+        <li><strong>Reduced reporting prep time from hours to minutes</strong> via Python automation.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <h3>Commercial Business Analyst Trainee</h3>
+      <div class="meta">Mexico City · Feb 2025 – Aug 2025</div>
+      <ul>
+        <li>Built the <strong>first 4 Power BI dashboards</strong> for Loewe and Acqua di Parma — later scaled to 20+.</li>
+        <li>Coordinated product master data and new-item setup for Chedraui and Elektra.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <span class="track-label">Groupe SEB · Consumer Goods, €8B+ sales</span>
+      <h3>National CPFR Supply Chain Data Analyst</h3>
+      <div class="meta">Mexico City (Hybrid) · Feb 2024 – Aug 2024</div>
+      <ul>
+        <li>Ran CPFR analysis across <strong>25,000+ SKU-store combinations</strong> using Excel and R.</li>
+        <li>Improved operational efficiency across <strong>300+ retail locations</strong> via out-of-stock and inventory analysis.</li>
+      </ul>
+      <div class="skills">R · Excel · Data Modeling · ETL · CPFR Methodology</div>
+    </div>
+
+    <div class="entry">
+      <span class="track-label">El Puerto de Liverpool · Retail</span>
+      <h3>Automation Business Analyst</h3>
+      <div class="meta">Digital Center of Excellence, Finance · Mexico City · Aug 2024 – Feb 2025</div>
+      <ul>
+        <li>Led feasibility &amp; <strong>ROI evaluation for a $27,000 USD</strong> enterprise automation tool (UiPath Insights).</li>
+        <li>Designed ROI dashboards for RPA projects and implemented continuous monitoring.</li>
+      </ul>
+      <div class="skills">UiPath · RPA · ROI Analysis</div>
+    </div>
+
+    <div class="entry">
+      <span class="track-label">EGADE Business School (Tec de Monterrey)</span>
+      <h3>Data Analyst Intern</h3>
+      <div class="meta">Faculty and Research Intelligence Division · Mexico City · Aug 2024 – Dec 2024</div>
+      <ul>
+        <li>Built Power BI dashboards evaluating faculty/researcher performance.</li>
+        <li>Integrated the OpenAI API to classify and categorize academic articles.</li>
+      </ul>
+      <div class="skills">Power BI · Python · OpenAI API</div>
+    </div>
+  </section>
+
+  <section class="card" id="experience-creative">
+    <h2><span class="dot"></span>Content, Marketing &amp; Photography — Experience</h2>
+
+    <div class="entry">
+      <h3>Founder — Delot Media</h3>
+      <div class="meta">Mexico City · Aug 2019 – present</div>
+      <ul>
+        <li><strong>160+ clients served</strong>, including brands with a combined 350,000+ followers across Instagram and Facebook.</li>
+        <li>Photography, video production, social media strategy and analytics for 10+ simultaneous clients.</li>
+      </ul>
+      <div class="skills">Adobe Photoshop · Lightroom · Premiere</div>
+    </div>
+
+    <div class="entry">
+      <span class="track-label">Live Nation Entertainment / OCESA</span>
+      <h3>Digital Marketing &amp; Content Photographer, Core Team</h3>
+      <div class="meta">Festival Business Unit · Mexico City · Mar 2024 – Mar 2025</div>
+      <ul>
+        <li>Official festival photography for <strong>Vive Latino 2024</strong> — 12+ headline artists, incl. Kings of Leon, Billy Idol, Rüfüs Du Sol.</li>
+        <li><strong>Top-performing photographer, day 2 of Festival Arre 2024</strong> — highest post volume on the official account.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <h3>Press &amp; Media Partner Photographer/Videographer</h3>
+      <div class="meta">Concert &amp; Festival Business Unit · Feb 2023 – Mar 2024</div>
+      <ul><li>Year-long press/media partner coverage across concerts and festivals.</li></ul>
+    </div>
+
+    <div class="entry">
+      <h3>Freelance Content Manager — EDC México</h3>
+      <div class="meta">Artist labels/management (not OCESA) · Feb 2024, Feb 2025</div>
+      <ul><li>Content strategy, backstage coverage and aftermovies for two internationally touring DJs.</li></ul>
+      <div class="skills">Photography · Videography · Adobe Premiere Pro</div>
+    </div>
+
+    <div class="entry">
+      <span class="track-label">Tomorrowland — Lab of Tomorrow</span>
+      <h3>Content Marketing Producer</h3>
+      <div class="meta">Boom, Belgium · On-site · Jul 2026 (2 weeks)</div>
+      <ul>
+        <li>Produced content marketing and audiovisual content across Tomorrowland's entertainment-tech ecosystem.</li>
+        <li><strong>Recorded and edited Lab of Tomorrow's most-viral Reel to date.</strong></li>
+        <li>Owned the end-to-end pipeline: filming, editing, post-production, same-day delivery.</li>
+      </ul>
+      <div class="skills">Content Production · Video Editing · Interviewing</div>
+    </div>
+
+    <div class="entry">
+      <span class="track-label">Piso 40 · Restaurant / Hospitality</span>
+      <h3>Content Marketing Specialist</h3>
+      <div class="meta">Mexico City · May 2024 – May 2025</div>
+      <ul><li>Built the digital brand and social presence from scratch for Chef Aarón Oldak's restaurant.</li></ul>
+    </div>
+
+    <div class="entry">
+      <span class="track-label"><a href="https://www.linkedin.com/company/coparmexnacional" style="color:inherit">Coparmex</a></span>
+      <h3>Marketing &amp; Communications Coordinator</h3>
+      <div class="meta">COPARMEX University Chapter, ITESM · Mexico City · Dec 2024 – Aug 2025</div>
+      <ul><li>Collaborated directly with the President and Vice President on strategic initiatives.</li></ul>
+    </div>
+  </section>
+
+  <section class="card" id="entrepreneurship">
+    <h2><span class="dot"></span>Entrepreneurship</h2>
+    <div class="entry">
+      <h3>Co-Founder — Projectype</h3>
+      <div class="meta">Mexico City · Dec 2024 – Jun 2026</div>
+      <ul>
+        <li><strong>Finance Lead</strong> — budgeting, forecasting, profitability analysis, executive reporting.</li>
+        <li><strong>Technology Ops Lead</strong> — automated workflows with Notion, Make and Power BI.</li>
+        <li><strong>Board Member &amp; Co-Founder</strong> — corporate governance and strategic decisions.</li>
+      </ul>
+      <div class="skills">Budgeting · Financial Forecasting · Notion · Make · Power BI</div>
+    </div>
+  </section>
+
+  <section class="card" id="education">
+    <h2><span class="dot"></span>Education &amp; Leadership</h2>
+    <div class="grid-2">
+      <div>
+        <h3>MSc, International Management &amp; Finance</h3>
+        <div class="meta"><a href="https://www.linkedin.com/school/renneschoolofbusiness/">Rennes School of Business</a> · France</div>
+        <p style="color:var(--ink-soft);font-size:0.93rem;">Triple Crown accredited (AACSB · EQUIS · AMBA), Top 100 globally for MSc programs (FT, QS). Quantitative finance, econometrics, data science, Python-based forecasting, portfolio optimization and risk simulation.</p>
+      </div>
+      <div>
+        <h3>BSc, Business Intelligence</h3>
+        <div class="meta"><a href="https://www.linkedin.com/school/tecdemonterrey/">Tecnológico de Monterrey</a> · Mexico City</div>
+        <p style="color:var(--ink-soft);font-size:0.93rem;">97/100 (ITESM scale), 3.8/4.0 GPA. Tableau/Power BI dashboarding, Python &amp; R. Real corporate projects with OXXO, Patagonia, Banorte, Volaris, Jumex, L'Oréal, Mazda.</p>
+      </div>
+    </div>
+    <div class="entry" style="margin-top:10px;">
+      <h3>President, Business Intelligence</h3>
+      <div class="meta">Student Participation Committee, Tecnológico de Monterrey · May 2024 – Jun 2025</div>
+      <ul><li>Led a team representing the entire Business Intelligence student cohort.</li></ul>
+    </div>
+    <div class="entry">
+      <h3>Marketing Communications Intern ("Storyteller")</h3>
+      <div class="meta">Story Tellers Program, Tecnológico de Monterrey · Aug 2022 – Jul 2024 (2 years)</div>
+      <ul><li>Content marketing for Holon IQ, Starbucks Mexico and NFL Mexico; journalistic writing for the CONECTA platform.</li></ul>
+    </div>
+  </section>
+
+  <section class="card" id="skills">
+    <h2><span class="dot"></span>Skills &amp; Stack</h2>
+    <div class="pill-group">
+      <span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">SQL</span>
+      <span class="pill">Python</span><span class="pill">R</span><span class="pill">Tableau</span>
+      <span class="pill">Excel</span><span class="pill">UiPath / RPA</span><span class="pill">Notion</span>
+      <span class="pill">OpenAI API</span><span class="pill">Anthropic Claude</span><span class="pill">AWS</span>
+      <span class="pill">Google Cloud</span><span class="pill">Adobe Premiere Pro</span>
+      <span class="pill">Photoshop / Lightroom</span><span class="pill">Figma</span><span class="pill">Git / GitHub</span>
+    </div>
+    <p style="margin-top:18px;color:var(--ink-soft);font-size:0.93rem;">
+      <strong>Certifications:</strong> Microsoft Certified — Azure AI Fundamentals (AI-900) · Inside LVMH Certificate ·
+      Introduction to AWS · Google Cloud Foundations · SQL for Finance Professionals · Notion Certified Admin ·
+      Claude Code 101 · McKinsey Forward (Core Skills) · TOEFL ITP
+    </p>
+    <p style="color:var(--ink-soft);font-size:0.93rem;">
+      <strong>Languages:</strong> Spanish (native) · English (professional) · French (elementary)
+    </p>
+  </section>
+
+  <section class="card" id="projects">
+    <h2><span class="dot"></span>Featured Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <a class="name" href="https://github.com/ludodelot/rsb-datascience-finance-clustering-portfolios">rsb-datascience-finance-clustering-portfolios</a>
+        <span class="desc">K-Means &amp; hierarchical clustering across 105 US stocks to build portfolios</span>
+      </div>
+      <div class="project">
+        <a class="name" href="https://github.com/ludodelot/rsb-financial-econometrics-semiconductors">rsb-financial-econometrics-semiconductors</a>
+        <span class="desc">PCA, robust OLS, CSAD herding test &amp; EGARCH on the semiconductor supply chain</span>
+      </div>
+      <div class="project">
+        <a class="name" href="https://github.com/ludodelot/rsb-exchange-markets-ppp-mexico-france">rsb-exchange-markets-ppp-mexico-france</a>
+        <span class="desc">Testing Purchasing Power Parity between Mexico and France, 2020–2024</span>
+      </div>
+      <div class="project">
+        <a class="name" href="https://github.com/ludodelot/rsb-financial-toolbox-easyvelo">rsb-financial-toolbox-easyvelo</a>
+        <span class="desc">Financial model (P&amp;L, WACC, break-even) for a bike-subscription business plan</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Ludovic Delot · Mexico City · <a href="mailto:ludovicdelot99@gmail.com">ludovicdelot99@gmail.com</a></p>
+  <p><a href="https://www.linkedin.com/in/delot/">LinkedIn</a> · <a href="https://github.com/ludodelot">GitHub</a></p>
+</footer>
+
+</body>
+</html>
