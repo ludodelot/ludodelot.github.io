@@ -191,8 +191,6 @@
   .hero { position: relative; padding: 128px 24px 120px; text-align: center; overflow: hidden; }
   .orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.55; pointer-events: none; z-index: 0; }
   .orb-1 { width: 420px; height: 420px; top: -160px; left: -120px; background: radial-gradient(circle, var(--blue-2), transparent 70%); }
-  .orb-2 { width: 380px; height: 380px; top: -80px; right: -140px; background: radial-gradient(circle, var(--navy-2), transparent 70%); }
-  .orb-3 { width: 320px; height: 320px; bottom: -180px; left: 40%; background: radial-gradient(circle, var(--blue-light), transparent 70%); opacity: 0.35; }
 
   .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
   .portrait-wrap {
@@ -219,13 +217,50 @@
   .hero .links a:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 0 10px 24px var(--glass-shadow); }
   .hero .links a.primary { background: linear-gradient(140deg, var(--blue-2), var(--navy-2)); color: #fff; border-color: transparent; }
 
-  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 640px; margin: 0 auto; }
-  @media (max-width: 640px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
-  .stat-card { padding: 18px 10px; text-align: center; }
-  .stat-card .num { font-size: 1.5rem; font-weight: 800; color: var(--navy-2); letter-spacing: -0.02em; }
-  :root[data-theme="dark"] .stat-card .num { color: #7FB3F0; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stat-card .num { color: #7FB3F0; } }
-  .stat-card .label { font-size: 0.74rem; color: var(--ink-soft); margin-top: 4px; }
+  /* ---------- Bento overview ---------- */
+  .bento {
+    display: grid; gap: 14px; margin: -76px 0 60px; position: relative; z-index: 2;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "story story stat1 stat2"
+      "story story stat3 stat4"
+      "wide  wide  wide  wide";
+  }
+  @media (max-width: 720px) {
+    .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "story story" "stat1 stat2" "stat3 stat4" "wide wide"; margin-top: -40px; }
+  }
+  .bento-cell {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 26px 28px; box-shadow: 0 1px 3px rgba(10,20,40,0.06);
+  }
+  .bento-story { grid-area: story; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .bento-story p { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.65; }
+  .bento-story strong { color: var(--ink); }
+  .bento-kicker { font-size: 0.78rem; font-weight: 700; color: var(--blue-2); }
+  .bento-split { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.82rem; font-weight: 600; }
+  .bento-split .chip-bi, .bento-split .chip-cr {
+    padding: 6px 12px; border-radius: 999px; background: rgba(31,111,178,0.1); color: var(--blue-2);
+  }
+  .bento-split .chip-cr { background: rgba(217,119,87,0.12); color: #C3552B; }
+  .bento-split .bento-x { color: var(--ink-soft); }
+  .bento-stat { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; grid-column: span 1; }
+  .bento-stat:nth-of-type(2) { grid-area: stat1; }
+  .bento-stat:nth-of-type(3) { grid-area: stat2; }
+  .bento-stat:nth-of-type(4) { grid-area: stat3; }
+  .bento-stat:nth-of-type(5) { grid-area: stat4; }
+  .bento-stat .num { font-size: 1.7rem; font-weight: 800; color: var(--navy-2); letter-spacing: -0.02em; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bento-stat .num { color: #7FB3F0; } }
+  :root[data-theme="dark"] .bento-stat .num { color: #7FB3F0; }
+  .bento-stat .label { font-size: 0.76rem; color: var(--ink-soft); margin-top: 6px; }
+  .bento-wide { grid-area: wide; }
+  .bento-wide .pill-group { margin-top: 12px; }
+
+  /* ---------- Scroll-linked track wash (BI = cool, Creative = warm) ---------- */
+  .track-wash {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(900px 700px at 50% 20%, rgba(217,119,87,0.12), transparent 65%);
+    opacity: 0; transition: opacity 0.4s ease;
+  }
 
   /* ---------- Layout ---------- */
   .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px 100px; position: relative; z-index: 1; }
@@ -320,14 +355,14 @@
   <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch color theme" title="Switch color theme">🌙</button>
 </nav>
 
+<div class="track-wash" id="trackWash"></div>
+
 <div class="hero">
   <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
   <div class="hero-inner">
     <div class="portrait-wrap"><img src="assets/portrait.jpg" alt="Portrait of Ludovic Delot" width="168" height="168"></div>
     <h1>Ludovic Delot</h1>
-    <p class="tagline">Business Intelligence &amp; Data Analyst · Content Producer</p>
+    <p class="tagline">Reads the numbers. Shoots the moment.</p>
     <p class="location">📍 Mexico City, Mexico · 🇲🇽 🇫🇷 Dual national</p>
     <div class="links">
       <a class="primary" href="https://www.linkedin.com/in/delot/">LinkedIn</a>
@@ -335,16 +370,34 @@
       <a href="mailto:contactoludovicdelot@gmail.com">Email</a>
       <a href="#" id="pdfBtn">Download CV (PDF)</a>
     </div>
-    <div class="stat-row reveal-stagger">
-      <div class="stat-card glass reveal"><div class="num">20+</div><div class="label">Power BI dashboards shipped</div></div>
-      <div class="stat-card glass reveal"><div class="num">25k+</div><div class="label">SKU–store combos forecasted</div></div>
-      <div class="stat-card glass reveal"><div class="num">160+</div><div class="label">Delot Media clients</div></div>
-      <div class="stat-card glass reveal"><div class="num">2</div><div class="label">Degrees · MX + FR</div></div>
-    </div>
   </div>
 </div>
 
 <div class="wrap">
+
+  <section class="bento reveal-stagger" id="overview" aria-label="Overview">
+    <div class="bento-cell bento-story reveal">
+      <span class="bento-kicker">Two ways of seeing</span>
+      <p>By day, <strong>Ludovic turns 25,000+ SKU–store rows into a single Power BI number</strong> a Marketing lead can act on. By night, he's in the pit at Vive Latino <strong>turning one frame into the shot a festival remembers.</strong> Same instinct — find the signal, frame it so someone else can see it instantly — pointed at two different canvases.</p>
+      <div class="bento-split" aria-hidden="true">
+        <span class="chip-bi">Business Intelligence</span>
+        <span class="bento-x">×</span>
+        <span class="chip-cr">Festival Photography</span>
+      </div>
+    </div>
+    <div class="bento-cell bento-stat reveal"><div class="num">20+</div><div class="label">Power BI dashboards shipped</div></div>
+    <div class="bento-cell bento-stat reveal"><div class="num">25k+</div><div class="label">SKU–store combos forecasted</div></div>
+    <div class="bento-cell bento-stat reveal"><div class="num">160+</div><div class="label">Delot Media clients</div></div>
+    <div class="bento-cell bento-stat reveal"><div class="num">2</div><div class="label">Degrees · MX + FR</div></div>
+    <div class="bento-cell bento-wide reveal">
+      <span class="bento-kicker">Stack</span>
+      <div class="pill-group">
+        <span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">SQL</span>
+        <span class="pill">Python</span><span class="pill">R</span><span class="pill">Adobe Premiere</span>
+        <span class="pill">Lightroom</span><span class="pill">Figma</span>
+      </div>
+    </div>
+  </section>
 
   <section class="section reveal" id="about">
     <h2><span class="dot"></span>About</h2>
@@ -681,6 +734,23 @@
     e.preventDefault();
     window.print();
   });
+
+  (function () {
+    var wash = document.getElementById('trackWash');
+    var creative = document.getElementById('experience-creative');
+    if (!wash || !creative) return;
+    var onScroll = function () {
+      var r = creative.getBoundingClientRect();
+      var vh = window.innerHeight;
+      // Ramp opacity in as the creative section's top approaches/enters the viewport.
+      var progress = (vh - r.top) / vh;
+      progress = Math.max(0, Math.min(1, progress));
+      wash.style.opacity = (progress * 0.9).toFixed(2);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
 
   (function () {
     var nav = document.getElementById('navbar');
