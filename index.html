@@ -390,6 +390,53 @@
     .hero { padding: 12px 0; }
     .glass, .bento-cell { background: #fff; box-shadow: none; border: 1px solid #ddd; -webkit-backdrop-filter: none; backdrop-filter: none; }
   }
+
+  /* ---------- CV generator modal ---------- */
+  .cv-modal-backdrop {
+    position: fixed; inset: 0; z-index: 100; background: rgba(6,11,22,0.55);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .cv-modal { max-width: 480px; width: 100%; padding: 30px 32px; background: var(--card); }
+  .cv-modal h3 { margin: 0 0 8px; font-size: 1.25rem; color: var(--ink); }
+  .cv-modal-sub { margin: 0 0 22px; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; }
+  .cv-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .cv-option { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s ease, background 0.2s ease; }
+  .cv-option:has(input:checked) { border-color: var(--blue-2); background: rgba(46,134,222,0.07); }
+  .cv-option input { margin-top: 3px; accent-color: var(--blue-2); }
+  .cv-option span { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.45; }
+  .cv-option strong { color: var(--ink); }
+  .cv-modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
+  .cv-btn-primary, .cv-btn-secondary { padding: 10px 20px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer; }
+  .cv-btn-primary { background: linear-gradient(140deg, var(--blue-2), var(--navy-2)); color: #fff; }
+  .cv-btn-secondary { background: transparent; color: var(--ink-soft); }
+  .cv-btn-secondary:hover { color: var(--ink); }
+
+  /* ---------- ATS resume (screen: always hidden; print: shown exclusively) ---------- */
+  #atsResume { display: none; }
+  @media print {
+    body.printing-resume * { visibility: hidden; }
+    body.printing-resume #atsResume, body.printing-resume #atsResume * { visibility: visible; }
+    body.printing-resume #atsResume {
+      display: block; visibility: visible; position: absolute; top: 0; left: 0; width: 100%;
+      font-family: "Times New Roman", Times, Georgia, serif; color: #000; background: #fff;
+      font-size: 11pt; line-height: 1.35;
+    }
+    @page { size: letter; margin: 0.75in; }
+    body.printing-resume #atsResume h1 { font-size: 16pt; margin: 0 0 2pt; text-align: center; }
+    body.printing-resume #atsResume .ats-contact { text-align: center; font-size: 10pt; margin: 0 0 12pt; }
+    body.printing-resume #atsResume .ats-contact a { color: #000; text-decoration: none; }
+    body.printing-resume #atsResume h2 {
+      font-size: 11.5pt; text-transform: uppercase; letter-spacing: 0.03em; margin: 12pt 0 4pt;
+      padding-bottom: 2pt; border-bottom: 1px solid #000;
+    }
+    body.printing-resume #atsResume .ats-entry { margin-bottom: 8pt; }
+    body.printing-resume #atsResume .ats-row { display: flex; justify-content: space-between; font-weight: bold; }
+    body.printing-resume #atsResume .ats-subrow { display: flex; justify-content: space-between; font-style: italic; font-size: 10.5pt; margin-bottom: 2pt; }
+    body.printing-resume #atsResume ul { margin: 2pt 0 0; padding-left: 16pt; }
+    body.printing-resume #atsResume li { margin-bottom: 1.5pt; }
+    body.printing-resume #atsResume .ats-summary { margin: 0 0 10pt; }
+    body.printing-resume #atsResume .ats-skills { margin: 0; }
+  }
 </style>
 </head>
 <body>
@@ -987,6 +1034,26 @@
   </p>
 </footer>
 
+<!-- CV generator modal -->
+<div class="cv-modal-backdrop" id="cvModalBackdrop" hidden>
+  <div class="cv-modal glass" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+    <h3 id="cvModalTitle">Download my CV</h3>
+    <p class="cv-modal-sub">Choose which experience to include. I'll generate a clean, ATS-friendly resume (Harvard format) ready to print or save as PDF.</p>
+    <div class="cv-options">
+      <label class="cv-option"><input type="radio" name="cvTrack" value="bi" checked><span><strong>Data &amp; BI</strong><br>Business Intelligence experience only</span></label>
+      <label class="cv-option"><input type="radio" name="cvTrack" value="creative"><span><strong>Creative &amp; Marketing</strong><br>Content, photography &amp; marketing experience only</span></label>
+      <label class="cv-option"><input type="radio" name="cvTrack" value="both"><span><strong>Both</strong><br>Full combined résumé</span></label>
+    </div>
+    <div class="cv-modal-actions">
+      <button type="button" class="cv-btn-secondary" id="cvCancel">Cancel</button>
+      <button type="button" class="cv-btn-primary" id="cvGenerate">Generate PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden ATS-friendly resume, populated by JS, shown only when printing -->
+<div id="atsResume"></div>
+
 <script>
   // Theme toggle
   (function () {
@@ -1009,7 +1076,154 @@
   })();
 
   // PDF export
-  document.getElementById('pdfBtn').addEventListener('click', function (e) { e.preventDefault(); window.print(); });
+  // CV generator: modal + ATS-friendly (Harvard format) resume builder
+  (function () {
+    var pdfBtn = document.getElementById('pdfBtn');
+    var backdrop = document.getElementById('cvModalBackdrop');
+    var cancelBtn = document.getElementById('cvCancel');
+    var generateBtn = document.getElementById('cvGenerate');
+    var atsResume = document.getElementById('atsResume');
+
+    var CONTACT = {
+      name: 'Ludovic Delot',
+      location: 'Mexico City, Mexico',
+      email: 'contactoludovicdelot@gmail.com',
+      linkedin: 'linkedin.com/in/delot',
+      github: 'github.com/ludodelot'
+    };
+
+    var SUMMARY = {
+      bi: 'Business Intelligence &amp; Data Analyst with 4+ years scaling enterprise reporting products across luxury, retail and consumer goods. Built a 25-table data model at LVMH powering 20+ Power BI dashboards; forecasted 25,000+ SKU-store combinations at Groupe SEB. MSc in International Management &amp; Finance; BSc in Business Intelligence with a Minor in Artificial Intelligence.',
+      creative: 'Content producer and festival photographer with 5+ years running Delot Media (160+ clients) alongside official photography and content roles for Live Nation/OCESA, Tomorrowland and multiple Mexico City festivals and brands. Skilled across the full production pipeline: shooting, editing and campaign strategy.',
+      both: 'Multidisciplinary Business Intelligence &amp; Content professional with 4+ years of experience spanning enterprise BI (LVMH, Groupe SEB, El Puerto de Liverpool) and festival photography / content production (Live Nation/OCESA, Tomorrowland, Delot Media). MSc in International Management &amp; Finance; BSc in Business Intelligence with a Minor in Artificial Intelligence.'
+    };
+
+    var EDUCATION = [
+      { degree: 'MSc, International Management &amp; Finance', school: 'Rennes School of Business, France', note: 'Triple Crown accredited (AACSB, EQUIS, AMBA) &middot; Top 100 globally for MSc programs' },
+      { degree: 'BSc, Business Intelligence &mdash; Minor, Artificial Intelligence with Business Impact', school: 'Tecnol&oacute;gico de Monterrey, Mexico', note: '97/100 &middot; 3.8/4.0 GPA &middot; #1 university in Mexico (QS 2024)' }
+    ];
+
+    var HONORS = [
+      'Winner, CDL Campus Phase &mdash; representing Tec CCM at INC MTY 2023',
+      'Winner, "Patagonia, Conscious Capitalism and Story Prototyping" Challenge, Tec de Monterrey',
+      'Winner, Banorte Ideation and Prototyping Challenge (Regional Presentation)',
+      'Winner, 100% Venture Lab Summer Sprint Scholarship: Product Validation and Early Traction',
+      'Academic Talent Scholarship &mdash; highest incoming-class GPA'
+    ];
+
+    var CERTS_BI = ['Microsoft Certified: Azure AI Fundamentals (AI-900)', 'Google Cloud Foundations', 'Introduction to AWS', 'SQL for Finance Professionals', 'Connecting Data in Tableau'];
+    var CERTS_CREATIVE = ['Complete Data Storytelling Course, Beginner to Expert', 'Notion Certified Admin'];
+
+    var SKILLS_BI = 'Power BI, DAX, SQL, Python, R, Data Modeling, ETL, KPI Governance, UiPath/RPA, Tableau, Excel, AWS, Google Cloud, OpenAI API';
+    var SKILLS_CREATIVE = 'Adobe Photoshop, Lightroom, Premiere Pro, Photography, Videography, Content Strategy, Social Media Analytics, Figma';
+
+    var BI_EXPERIENCE = [
+      { company: 'LVMH', location: 'Madrid, Spain', title: 'Data &amp; Business Intelligence (Power BI) Intern', dates: 'Jun 2026 &ndash; Present', bullets: [
+        'Coordinate BI requirements, KPI definitions and production delivery across Business, Data, IT and Beauty Tech teams.',
+        'Manage entity-relationship models across Google Cloud Platform and SharePoint; standardize KPI definitions and data-quality controls.',
+        'Automate ETL processes in Python and validate models with Microsoft Copilot; led training for 3 team members on UK ETL automation.'
+      ]},
+      { company: 'LVMH', location: 'Remote (France)', title: 'Commercial Business Analyst Trainee', dates: 'Aug 2025 &ndash; Jun 2026', bullets: [
+        'Led the Excel-to-Power BI transformation for Loewe and Acqua di Parma, replacing manual workflows with a self-service BI product.',
+        'Scaled the reporting product from 4 to 20+ automated Power BI dashboards, establishing it as Mexico’s official single source of truth.',
+        'Designed a 25-table entity-relationship model connecting sell-out, stock, e-commerce and forecast data; cut reporting prep time from hours to minutes via Python automation.'
+      ]},
+      { company: 'LVMH', location: 'Mexico City, Mexico', title: 'Commercial Business Analyst Trainee', dates: 'Feb 2025 &ndash; Aug 2025', bullets: [
+        'Built the first 4 Power BI dashboards for Loewe and Acqua di Parma, the foundation later scaled to 20+.',
+        'Coordinated product master data and new-item setup for two major retail partners (Chedraui, Elektra).'
+      ]},
+      { company: 'El Puerto de Liverpool', location: 'Mexico City, Mexico', title: 'Automation Business Analyst, Digital Center of Excellence (Finance)', dates: 'Aug 2024 &ndash; Feb 2025', bullets: [
+        'Led feasibility study and ROI evaluation for a $27,000 USD enterprise automation tool (UiPath Insights).',
+        'Designed ROI dashboards for RPA projects and implemented continuous performance monitoring.'
+      ]},
+      { company: 'Groupe SEB', location: 'Mexico City, Mexico', title: 'National CPFR Supply Chain Data Analyst', dates: 'Feb 2024 &ndash; Aug 2024', bullets: [
+        'Ran CPFR demand-forecasting analysis across 25,000+ SKU-store combinations using Excel and R.',
+        'Improved operational efficiency across 300+ retail locations through out-of-stock and inventory analysis.'
+      ]},
+      { company: 'EGADE Business School, Tec de Monterrey', location: 'Mexico City, Mexico', title: 'Data Analyst Intern, Faculty &amp; Research Intelligence Division', dates: 'Aug 2024 &ndash; Dec 2024', bullets: [
+        'Built Power BI dashboards evaluating faculty and researcher performance (SDG alignment, publication output, tenure).',
+        'Integrated the OpenAI API to classify and categorize academic articles, automating content analysis.'
+      ]}
+    ];
+
+    var CREATIVE_EXPERIENCE = [
+      { company: 'Delot Media (Founder)', location: 'Mexico City, Mexico', title: 'Founder', dates: 'Aug 2019 &ndash; Present', bullets: [
+        'Serve 160+ clients with photography, video production and social media strategy, managing 10+ simultaneous accounts.',
+        'Delivered on-location media coverage at large-scale venues including Autódromo Hermanos Rodríguez and Auditorio Nacional.'
+      ]},
+      { company: 'Tomorrowland, Lab of Tomorrow', location: 'Boom, Belgium', title: 'Content Marketing Producer', dates: 'Jul 2026', bullets: [
+        'Produced content marketing and audiovisual content across Tomorrowland’s entertainment-tech ecosystem.',
+        'Recorded and edited Lab of Tomorrow’s most-viral Reel to date, owning the pipeline end-to-end.'
+      ]},
+      { company: 'Coparmex (COPARMEX University Chapter, ITESM)', location: 'Mexico City, Mexico', title: 'Marketing &amp; Communications Coordinator', dates: 'Dec 2024 &ndash; Aug 2025', bullets: [
+        'Collaborated directly with the President and Vice President on strategic communications initiatives.'
+      ]},
+      { company: 'Piso 40', location: 'Mexico City, Mexico', title: 'Content Marketing Specialist / Project Associate', dates: 'Jan 2024 &ndash; May 2025', bullets: [
+        'Built the digital brand and social presence from scratch for a Chef-Aarón-Oldak restaurant concept.',
+        'Coordinated photo/video sessions and refined content strategy using engagement data.'
+      ]},
+      { company: 'Live Nation Entertainment / OCESA', location: 'Mexico City, Mexico', title: 'Digital Marketing &amp; Content Photographer, Core Team', dates: 'Feb 2023 &ndash; Mar 2025', bullets: [
+        'Delivered official festival photography for Vive Latino 2024 (12+ headline artists) and Festival Arre 2024 (top-performing photographer, day 2).',
+        'Extended coverage as press/media partner across Zamna, Vaivén and Afterlife Mexico City.'
+      ]},
+      { company: 'EDC México (Freelance)', location: 'Mexico City, Mexico', title: 'Content Manager &amp; Artist Crew Member', dates: 'Feb 2024, Feb 2025', bullets: [
+        'Directed content strategy for international touring DJs’ social platforms, producing platform-optimized content for Instagram, TikTok and YouTube Shorts.',
+        'Edited aftermovies and recap videos in Adobe Premiere Pro.'
+      ]},
+      { company: 'Polymath 360, Freemium Studios', location: 'Mexico City, Mexico', title: 'Marketing Assistant &mdash; Cosmos México', dates: 'Dec 2024', bullets: [
+        'Photographed speakers with a combined 30M+ social following at Cosmos México, a leading LatAm science &amp; tech event.'
+      ]},
+      { company: 'Tecnológico de Monterrey', location: 'Mexico City, Mexico', title: 'Digital Marketing &amp; Content roles (4 positions)', dates: 'Aug 2022 &ndash; Dec 2024', bullets: [
+        'Managed content marketing for brands including Holon IQ, Starbucks Mexico and NFL Mexico as a 2-year Marketing Communications Intern.',
+        'Produced multimedia coverage for flagship events (BOWLS 2024, "Welcome to the Future" AI summit) and Blua Media’s highest-profile campaigns.'
+      ]},
+      { company: 'Fundación Casa Wabi / Vogue México', location: 'Mexico City, Mexico', title: 'Digital Marketing Project Assistant', dates: 'Oct 2024', bullets: ['Led video coverage strategy for Vogue México and Casa Wabi’s 10th-anniversary event.'] },
+      { company: 'NOMADA', location: 'Mexico City, Mexico', title: 'Digital Marketing Project Assistant', dates: 'Sep 2024', bullets: ['Led full video content production for a jewelry brand’s collection launch.'] },
+      { company: 'Emergente Creative Studio', location: 'Mexico City, Mexico', title: 'Media Producer &amp; Content Marketing Intern', dates: 'Aug 2023 &ndash; Mar 2024', bullets: ['Produced raw media assets and adapted content marketing across sectors for studio clients.'] },
+      { company: 'Biointellectus', location: 'Mexico City, Mexico', title: 'Marketing Winter Intern', dates: 'Dec 2023 &ndash; Jan 2024', bullets: ['Conducted consumer-behavior market research on sustainable packaging, presenting findings to key stakeholders.'] }
+    ];
+
+    function entryHtml(e) {
+      return '<div class="ats-entry">' +
+        '<div class="ats-row"><span>' + e.company + '</span><span>' + e.location + '</span></div>' +
+        '<div class="ats-subrow"><span>' + e.title + '</span><span>' + e.dates + '</span></div>' +
+        '<ul>' + e.bullets.map(function (b) { return '<li>' + b + '</li>'; }).join('') + '</ul>' +
+        '</div>';
+    }
+
+    function buildResume(track) {
+      var exp = track === 'bi' ? BI_EXPERIENCE : track === 'creative' ? CREATIVE_EXPERIENCE : BI_EXPERIENCE.concat(CREATIVE_EXPERIENCE);
+      var summary = SUMMARY[track];
+      var certs = track === 'bi' ? CERTS_BI : track === 'creative' ? CERTS_CREATIVE : CERTS_BI.concat(CERTS_CREATIVE);
+      var skills = track === 'bi' ? SKILLS_BI : track === 'creative' ? SKILLS_CREATIVE : SKILLS_BI + ', ' + SKILLS_CREATIVE;
+
+      var html = '<h1>' + CONTACT.name + '</h1>' +
+        '<div class="ats-contact">' + CONTACT.location + ' &middot; ' + CONTACT.email + ' &middot; ' + CONTACT.linkedin + ' &middot; ' + CONTACT.github + '</div>' +
+        '<h2>Summary</h2><p class="ats-summary">' + summary + '</p>' +
+        '<h2>Experience</h2>' + exp.map(entryHtml).join('') +
+        '<h2>Education</h2>' + EDUCATION.map(function (e) {
+          return '<div class="ats-entry"><div class="ats-row"><span>' + e.degree + '</span></div>' +
+            '<div class="ats-subrow"><span>' + e.school + '</span></div><p style="margin:2pt 0 0;">' + e.note + '</p></div>';
+        }).join('') +
+        '<h2>Skills</h2><p class="ats-skills">' + skills + '</p>' +
+        '<h2>Certifications</h2><p class="ats-skills">' + certs.join(' &middot; ') + '</p>' +
+        '<h2>Honors &amp; Awards</h2><ul>' + HONORS.map(function (h) { return '<li>' + h + '</li>'; }).join('') + '</ul>';
+
+      atsResume.innerHTML = html;
+    }
+
+    pdfBtn.addEventListener('click', function (e) { e.preventDefault(); backdrop.hidden = false; });
+    cancelBtn.addEventListener('click', function () { backdrop.hidden = true; });
+    backdrop.addEventListener('click', function (e) { if (e.target === backdrop) backdrop.hidden = true; });
+    generateBtn.addEventListener('click', function () {
+      var track = document.querySelector('input[name="cvTrack"]:checked').value;
+      buildResume(track);
+      backdrop.hidden = true;
+      document.body.classList.add('printing-resume');
+      window.print();
+    });
+    window.addEventListener('afterprint', function () { document.body.classList.remove('printing-resume'); });
+  })();
 
   // Floating nav on scroll
   (function () {
