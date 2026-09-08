@@ -317,6 +317,10 @@
   .lead { font-size: 1.06rem; color: var(--ink-soft); }
   .lead strong { color: var(--ink); }
   .card-pad { padding: 30px 32px; }
+  .about-hook { font-size: 1.28rem; font-weight: 700; color: var(--ink); line-height: 1.45; margin: 0 0 22px; letter-spacing: -0.01em; }
+  .about-facts { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border); }
+  .about-fact { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--ink-soft); font-weight: 600; }
+  .about-fact svg.icon { color: var(--blue-2); }
 
   /* ---------- Track sections (togglable order) ---------- */
   .track-sections { display: flex; flex-direction: column; }
@@ -355,12 +359,15 @@
   .pill-group { display: flex; flex-wrap: wrap; gap: 9px; }
   .pill { background: var(--glass); color: var(--blue-2); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); padding: 7px 14px; border-radius: 999px; font-size: 0.83rem; font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
 
-  .featured-photo { margin: 0 0 20px; border-radius: 24px; overflow: hidden; padding: 0; }
-  .featured-photo img { width: 100%; max-height: 560px; object-fit: cover; object-position: 50% 20%; display: block; }
-  .featured-photo figcaption { padding: 16px 20px; font-size: 1rem; font-weight: 700; color: var(--ink); }
-  .photo-strip { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; }
-  .photo-card { margin: 0; flex: 0 0 min(340px, 80vw); border-radius: 20px; overflow: hidden; padding: 0; scroll-snap-align: start; }
-  .photo-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+  .photo-marquee { padding: 18px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+  .photo-track { display: flex; gap: 18px; width: max-content; animation: photo-scroll 55s linear infinite; }
+  .photo-marquee:hover .photo-track { animation-play-state: paused; }
+  @keyframes photo-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .photo-track { animation: none; overflow-x: auto; } }
+  .photo-card { margin: 0; flex: 0 0 300px; border-radius: 18px; overflow: hidden; padding: 0; background: var(--card); border: 1px solid var(--border); }
+  .photo-card img { width: 100%; height: 210px; object-fit: cover; display: block; }
+  .photo-card.featured { flex-basis: 420px; }
+  .photo-card.featured img { height: 300px; object-position: 50% 15%; }
   .photo-card figcaption { padding: 12px 16px; font-size: 0.85rem; color: var(--ink-soft); font-weight: 600; }
 
   .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -463,8 +470,6 @@
       <div class="row"><strong>BSc,</strong> Business Intelligence + <strong>Minor, Artificial Intelligence with Business Impact</strong> — Tecnológico de Monterrey, 97/100</div>
     </div>
 
-    <div class="bento-cell bento-stat reveal"><div class="num">160+</div><div class="label">Delot Media clients</div></div>
-
     <div class="bento-cell bento-years reveal">
       <div class="num" id="yearsExp">4.1</div>
       <div class="label">Years of professional experience</div>
@@ -502,77 +507,48 @@
 
   <section class="section reveal" id="about">
     <h2><svg class="icon"><use href="#i-dot"/></svg>About</h2>
-    <div class="glass card-pad">
+    <div class="glass card-pad about-card">
+      <p class="about-hook">I turn messy data into decisions, and split-second moments into photographs — and I've built a career doing both at once.</p>
+
       <p class="lead">
-        I'm a Business Intelligence &amp; Data Analyst currently working as
-        <strong>Data &amp; BI Intern at <a href="https://www.linkedin.com/company/lvmh">LVMH</a></strong>,
-        where I scaled a reporting product from 4 to 20+ Power BI dashboards on a 25-table data model I designed,
-        standardizing KPIs across Marketing, Commercial, Finance and IT teams. Before LVMH, I worked in CPFR
-        supply-chain forecasting across 25,000+ SKU-store combinations at
-        <a href="https://www.linkedin.com/company/groupe-seb">Groupe SEB</a>, and led RPA/automation ROI evaluation
-        at <a href="https://www.linkedin.com/company/elpuertodeliverpool">El Puerto de Liverpool</a>.
-      </p>
-      <p class="lead">
-        In parallel, I run a second professional track in content production — festival photography for
-        <a href="https://www.linkedin.com/company/live-nation">Live Nation</a>/<a href="https://www.linkedin.com/company/ocesa">OCESA</a>
-        (Vive Latino, Festival Arre), Content Marketing Producer for
-        <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland's</a> Lab of Tomorrow, and my own
-        studio, <strong><a href="https://www.instagram.com/delot_/">Delot Media</a></strong>, founded in 2019 with 160+ clients served.
+        As <strong>Data &amp; BI Intern at <a href="https://www.linkedin.com/company/lvmh">LVMH</a></strong> — Europe's
+        largest company by market capitalization — I scaled a reporting product from 4 to 20+ Power BI dashboards on a
+        25-table data model I designed myself, standardizing KPIs across Marketing, Commercial, Finance and IT. Before
+        that, I forecasted supply chains across 25,000+ SKU-store combinations at
+        <a href="https://www.linkedin.com/company/groupe-seb">Groupe SEB</a> and led automation ROI evaluation at
+        <a href="https://www.linkedin.com/company/elpuertodeliverpool">El Puerto de Liverpool</a>. Along the way, I've
+        worked from Mexico, France, Spain and Belgium.
       </p>
       <p class="lead">
-        I hold an <strong>MSc in International Management &amp; Finance</strong> from
-        <a href="https://www.linkedin.com/school/renneschoolofbusiness/">Rennes School of Business</a> and a
-        <strong>BSc in Business Intelligence with a Minor in Artificial Intelligence</strong> from
-        <a href="https://www.linkedin.com/school/tecdemonterrey/">Tecnológico de Monterrey</a>.
+        In parallel, I run <strong><a href="https://www.instagram.com/delot_/">Delot Media</a></strong>, the photography
+        and video studio I founded in 2019 — <strong>160+ clients served</strong> since. That same instinct for finding
+        the shot has put me in the photo pit at Vive Latino and Festival Arre for
+        <a href="https://www.linkedin.com/company/live-nation">Live Nation</a>/<a href="https://www.linkedin.com/company/ocesa">OCESA</a>,
+        and behind the camera producing content for <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland's</a>
+        Lab of Tomorrow in Belgium.
       </p>
-      <p class="lead" style="display:flex;align-items:center;gap:8px;">
-        <svg class="icon flag"><use href="#flag-mx"/></svg><svg class="icon flag"><use href="#flag-fr"/></svg>
-        I'm based in Mexico City, with dual Mexican &amp; French nationality.
-      </p>
+
+      <div class="about-facts">
+        <div class="about-fact">
+          <svg class="icon"><use href="#i-cap"/></svg>
+          <span>MSc, Rennes School of Business · BSc + AI Minor, Tec de Monterrey</span>
+        </div>
+        <div class="about-fact">
+          <svg class="icon flag"><use href="#flag-mx"/></svg><svg class="icon flag"><use href="#flag-fr"/></svg>
+          <span>Mexico City · Dual Mexican &amp; French national</span>
+        </div>
+        <div class="about-fact">
+          <svg class="icon"><use href="#i-globe"/></svg>
+          <span>Spanish (native) · English (professional) · French (elementary)</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="section reveal" id="highlights" aria-label="In the field">
     <h2><svg class="icon"><use href="#i-camera"/></svg>In the Field</h2>
-
-    <figure class="featured-photo glass">
-      <img src="assets/ludovic-delot-tomorrowland-photographer.jpg" width="1600" height="2000" alt="Ludovic Delot, festival photographer, shooting the main stage at Tomorrowland with a Canon camera and crew lanyard" loading="lazy">
-      <figcaption>Ludovic Delot shooting the main stage at Tomorrowland, Boom, Belgium</figcaption>
-    </figure>
-
-    <div class="photo-strip">
-      <figure class="photo-card glass">
-        <img src="assets/ludovic-delot-ai-hackathon-google.jpg" alt="Ludovic Delot and his team celebrating their AI Hackathon win at Google Mexico" loading="lazy">
-        <figcaption>AI Hackathon - <a href="https://www.linkedin.com/company/google">Google</a></figcaption>
-      </figure>
-      <figure class="photo-card glass">
-        <img src="assets/ludovic-delot-vive-latino-photographer.jpg" alt="Ludovic Delot taking a selfie with his camera while photographing the crowd at Vive Latino festival" loading="lazy">
-        <figcaption>Shooting <a href="https://www.linkedin.com/company/ocesa">Vive Latino</a></figcaption>
-      </figure>
-      <figure class="photo-card glass">
-        <img src="assets/ludovic-delot-festival-arre-photo-team.jpg" alt="Ludovic Delot with the official Festival Arre photo team in front of the main stage" loading="lazy">
-        <figcaption>Festival Photo Team — <a href="https://www.linkedin.com/company/ocesa">Arre</a></figcaption>
-      </figure>
-      <figure class="photo-card glass">
-        <img src="assets/ludovic-delot-edc-mexico-2025.jpg" alt="Ludovic Delot posing with his camera at the EDC Mexico 2025 main stage" loading="lazy">
-        <figcaption>Covering EDC México 2025</figcaption>
-      </figure>
-      <figure class="photo-card glass">
-        <img src="assets/ludovic-delot-vogue-mexico-latam.jpg" alt="Ludovic Delot filming with a gimbal-mounted camera for Vogue Mexico and Latin America" loading="lazy">
-        <figcaption>Shooting for Vogue México y LatAm</figcaption>
-      </figure>
-      <figure class="photo-card glass">
-        <img src="assets/ludovic-delot-aws-summit.jpg" alt="Ludovic Delot's AWS Summit 2024 attendee badge at the Mexico City event" loading="lazy">
-        <figcaption>AWS Summit, Mexico City</figcaption>
-      </figure>
-      <figure class="photo-card glass">
-        <img src="assets/ludovic-delot-projectype-el-financiero.jpg" alt="Ludovic Delot and the Projectype team featured in El Financiero newspaper" loading="lazy">
-        <figcaption><a href="#entrepreneurship">Projectype</a> featured in El Financiero</figcaption>
-      </figure>
-      <figure class="photo-card glass">
-        <img src="assets/ludovic-delot-tec-monterrey-inc-mty.jpg" alt="Ludovic Delot representing Tec de Monterrey Campus Ciudad de México at INC MTY" loading="lazy">
-        <figcaption>Representing <a href="https://www.linkedin.com/school/tecdemonterrey/">Tec de Monterrey</a> at INC MTY</figcaption>
-      </figure>
+    <div class="photo-marquee glass">
+      <div class="photo-track" id="photoTrack"></div>
     </div>
   </section>
 
@@ -1080,6 +1056,49 @@
     var start = new Date(2022, 7, 1); // August 2022
     var years = (Date.now() - start.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
     el.textContent = years.toFixed(1);
+  })();
+
+  // Photo marquee: builds the "In the Field" strip and duplicates it once for a seamless loop
+  (function () {
+    var track = document.getElementById('photoTrack');
+    if (!track) return;
+    var photos = [
+      { src: 'ludovic-delot-tomorrowland-photographer.jpg', featured: true,
+        alt: 'Ludovic Delot, festival photographer, shooting the main stage at Tomorrowland with a Canon camera and crew lanyard',
+        caption: 'Shooting the main stage at <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland</a>' },
+      { src: 'ludovic-delot-ai-hackathon-google.jpg',
+        alt: 'Ludovic Delot and his team celebrating their AI Hackathon win at Google Mexico',
+        caption: 'AI Hackathon - <a href="https://www.linkedin.com/company/google">Google</a>' },
+      { src: 'ludovic-delot-vive-latino-photographer.jpg',
+        alt: 'Ludovic Delot taking a selfie with his camera while photographing the crowd at Vive Latino festival',
+        caption: 'Shooting <a href="https://www.linkedin.com/company/ocesa">Vive Latino</a>' },
+      { src: 'ludovic-delot-festival-arre-photo-team.jpg',
+        alt: 'Ludovic Delot with the official Festival Arre photo team in front of the main stage',
+        caption: 'Festival Photo Team — <a href="https://www.linkedin.com/company/ocesa">Arre</a>' },
+      { src: 'ludovic-delot-edc-mexico-2025.jpg',
+        alt: 'Ludovic Delot posing with his camera at the EDC Mexico 2025 main stage',
+        caption: 'Covering EDC México 2025' },
+      { src: 'ludovic-delot-vogue-mexico-latam.jpg',
+        alt: 'Ludovic Delot filming with a gimbal-mounted camera for Vogue Mexico and Latin America',
+        caption: 'Shooting for Vogue México y LatAm' },
+      { src: 'ludovic-delot-aws-summit.jpg',
+        alt: "Ludovic Delot's AWS Summit 2024 attendee badge at the Mexico City event",
+        caption: 'AWS Summit, Mexico City' },
+      { src: 'ludovic-delot-projectype-el-financiero.jpg',
+        alt: 'Ludovic Delot and the Projectype team featured in El Financiero newspaper',
+        caption: '<a href="#entrepreneurship">Projectype</a> featured in El Financiero' },
+      { src: 'ludovic-delot-tec-monterrey-inc-mty.jpg',
+        alt: 'Ludovic Delot representing Tec de Monterrey Campus Ciudad de México at INC MTY',
+        caption: 'Representing <a href="https://www.linkedin.com/school/tecdemonterrey/">Tec de Monterrey</a> at INC MTY' }
+    ];
+    function renderSet() {
+      return photos.map(function (p) {
+        return '<figure class="photo-card' + (p.featured ? ' featured' : '') + '">' +
+          '<img src="assets/' + p.src + '" alt="' + p.alt + '" loading="lazy">' +
+          '<figcaption>' + p.caption + '</figcaption></figure>';
+      }).join('');
+    }
+    track.innerHTML = renderSet() + renderSet();
   })();
 
   // Skills marquee (duplicated once for seamless loop)
