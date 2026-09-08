@@ -406,6 +406,7 @@
     position: fixed; inset: 0; z-index: 100; background: rgba(6,11,22,0.55);
     display: flex; align-items: center; justify-content: center; padding: 20px;
   }
+  .cv-modal-backdrop[hidden] { display: none; }
   .cv-modal { max-width: 480px; width: 100%; padding: 30px 32px; background: var(--card); }
   .cv-modal h3 { margin: 0 0 8px; font-size: 1.25rem; color: var(--ink); }
   .cv-modal-sub { margin: 0 0 22px; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; }
@@ -1229,6 +1230,7 @@
 
     pdfBtn.addEventListener('click', function (e) { e.preventDefault(); backdrop.hidden = false; });
     cancelBtn.addEventListener('click', function () { backdrop.hidden = true; });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !backdrop.hidden) backdrop.hidden = true; });
     backdrop.addEventListener('click', function (e) { if (e.target === backdrop) backdrop.hidden = true; });
     generateBtn.addEventListener('click', function () {
       var track = document.querySelector('input[name="cvTrack"]:checked').value;
