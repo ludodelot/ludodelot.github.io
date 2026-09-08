@@ -8,13 +8,17 @@
 <meta name="author" content="Ludovic Delot">
 <meta name="keywords" content="Ludovic Delot, Business Intelligence, Data Analyst, Power BI, LVMH, Groupe SEB, El Puerto de Liverpool, Rennes School of Business, Tecnológico de Monterrey, Live Nation, OCESA, Tomorrowland, Delot Media, Mexico City">
 <link rel="canonical" href="https://ludodelot.github.io/">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <!-- Open Graph -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Ludovic Delot — Business Intelligence & Data Analyst / Content Producer">
 <meta property="og:description" content="BI & Data Analyst at LVMH · Previously Groupe SEB, El Puerto de Liverpool · Festival photographer & content producer for Live Nation/OCESA and Tomorrowland · MSc, Rennes School of Business.">
 <meta property="og:image" content="https://ludodelot.github.io/assets/portrait.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="800">
 <meta property="og:url" content="https://ludodelot.github.io/">
+<meta property="og:locale" content="en_US">
 <meta property="profile:first_name" content="Ludovic">
 <meta property="profile:last_name" content="Delot">
 
@@ -89,7 +93,7 @@
     --accent: #0A66C2;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --bg: #0A1220;
       --card: #101B30;
       --ink: #E8EEF7;
@@ -98,7 +102,19 @@
       --sky: #7E93B8;
     }
   }
+  :root[data-theme="dark"] {
+    --bg: #0A1220;
+    --card: #101B30;
+    --ink: #E8EEF7;
+    --ink-soft: #9FB2CE;
+    --border: #1F3A66;
+    --sky: #7E93B8;
+  }
   * { box-sizing: border-box; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+  }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
@@ -188,9 +204,29 @@
 
   .toc { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.85rem; margin-top: 10px; }
   .toc a { color: #D7E4F5; }
+
+  :focus-visible { outline: 2px solid var(--blue-2); outline-offset: 3px; }
+
+  .theme-toggle {
+    position: fixed; top: 16px; right: 16px; z-index: 10;
+    width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+    color: #fff; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  }
+  .theme-toggle:hover { background: rgba(255,255,255,0.2); }
+
+  @media print {
+    .theme-toggle, .toc, .hero .links { display: none; }
+    .hero { background: none; color: #000; padding: 12px 0; }
+    .hero .tagline, .hero .location { color: #333; }
+    body { background: #fff; }
+    section.card { box-shadow: none; border: none; padding: 8px 0; }
+  }
 </style>
 </head>
 <body>
+
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Switch color theme">🌙</button>
 
 <div class="hero">
   <img class="portrait" src="assets/portrait.jpg" alt="Portrait of Ludovic Delot">
@@ -201,6 +237,7 @@
     <a href="https://www.linkedin.com/in/delot/">LinkedIn</a>
     <a href="https://github.com/ludodelot">GitHub</a>
     <a href="mailto:contactoludovicdelot@gmail.com">Email</a>
+    <a href="#" onclick="window.print(); return false;">Download CV (PDF)</a>
   </div>
   <div class="toc">
     <a href="#about">About</a>
@@ -214,7 +251,7 @@
 
 <div class="wrap">
 
-  <section class="card" id="about">
+  <section class="card reveal" id="about">
     <h2><span class="dot"></span>About</h2>
     <p class="lead">
       <strong>Ludovic Delot</strong> is a Business Intelligence &amp; Data Analyst currently working as
@@ -241,7 +278,7 @@
     </p>
   </section>
 
-  <section class="card" id="experience-bi">
+  <section class="card reveal" id="experience-bi">
     <h2><span class="dot"></span>Business Intelligence &amp; Data — Experience</h2>
 
     <div class="entry">
@@ -311,7 +348,7 @@
     </div>
   </section>
 
-  <section class="card" id="experience-creative">
+  <section class="card reveal" id="experience-creative">
     <h2><span class="dot"></span>Content, Marketing &amp; Photography — Experience</h2>
 
     <div class="entry">
@@ -374,7 +411,7 @@
     </div>
   </section>
 
-  <section class="card" id="entrepreneurship">
+  <section class="card reveal" id="entrepreneurship">
     <h2><span class="dot"></span>Entrepreneurship</h2>
     <div class="entry">
       <h3>Co-Founder — Projectype</h3>
@@ -388,7 +425,7 @@
     </div>
   </section>
 
-  <section class="card" id="education">
+  <section class="card reveal" id="education">
     <h2><span class="dot"></span>Education &amp; Leadership</h2>
     <div class="grid-2">
       <div>
@@ -414,7 +451,7 @@
     </div>
   </section>
 
-  <section class="card" id="skills">
+  <section class="card reveal" id="skills">
     <h2><span class="dot"></span>Skills &amp; Stack</h2>
     <div class="pill-group">
       <span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">SQL</span>
@@ -434,7 +471,7 @@
     </p>
   </section>
 
-  <section class="card" id="projects">
+  <section class="card reveal" id="projects">
     <h2><span class="dot"></span>Featured Projects</h2>
     <div class="projects">
       <div class="project">
@@ -462,6 +499,47 @@
   <p>Ludovic Delot · Mexico City · <a href="mailto:contactoludovicdelot@gmail.com">contactoludovicdelot@gmail.com</a></p>
   <p><a href="https://www.linkedin.com/in/delot/">LinkedIn</a> · <a href="https://github.com/ludodelot">GitHub</a></p>
 </footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    var stored = localStorage.getItem('theme');
+    var mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function applied() {
+      return stored || (mql.matches ? 'dark' : 'light');
+    }
+    function paintButton() {
+      var isDark = applied() === 'dark';
+      toggle.textContent = isDark ? '☀️' : '🌙';
+      toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+    if (stored) root.setAttribute('data-theme', stored);
+    paintButton();
+
+    toggle.addEventListener('click', function () {
+      var next = applied() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      stored = next;
+      paintButton();
+    });
+  })();
+
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
