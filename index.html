@@ -364,11 +364,13 @@
   .photo-marquee:hover .photo-track { animation-play-state: paused; }
   @keyframes photo-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) { .photo-track { animation: none; overflow-x: auto; } }
-  .photo-card { margin: 0; flex: 0 0 300px; border-radius: 18px; overflow: hidden; padding: 0; background: var(--card); border: 1px solid var(--border); }
-  .photo-card img { width: 100%; height: 210px; object-fit: cover; display: block; }
-  .photo-card.featured { flex-basis: 420px; }
-  .photo-card.featured img { height: 300px; object-position: 50% 15%; }
-  .photo-card figcaption { padding: 12px 16px; font-size: 0.85rem; color: var(--ink-soft); font-weight: 600; }
+  .photo-card { margin: 0; flex: 0 0 280px; border-radius: 18px; overflow: hidden; padding: 0; background: var(--card); border: 1px solid var(--border); }
+  .photo-card .frame { background: var(--border); display: flex; align-items: center; justify-content: center; height: 260px; }
+  .photo-card img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .photo-card.featured { flex-basis: 300px; }
+  .photo-card.featured .frame { height: 340px; }
+  .photo-card figcaption { padding: 12px 16px; font-size: 0.85rem; color: var(--ink-soft); font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .photo-card figcaption .co-logo { margin: 0; }
 
   .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 640px) { .projects { grid-template-columns: 1fr; } }
@@ -456,11 +458,11 @@
   <section class="bento" id="overview" aria-label="Overview">
     <div class="bento-cell bento-story reveal">
       <span class="bento-kicker"><svg class="icon"><use href="#i-sparkle"/></svg> Two ways of seeing</span>
-      <p>By day, <strong>I turn 25,000+ SKU–store rows into a single Power BI number</strong> a Marketing lead can act on. By night, I'm in the pit at <a href="https://www.linkedin.com/company/ocesa">Vive Latino</a> <strong>turning one frame into the shot a festival remembers.</strong> Same instinct — find the signal, frame it so someone else can see it instantly — pointed at two different canvases.</p>
+      <p class="bento-story-line">Find the signal. Frame it so someone else can see it instantly.</p>
       <div class="bento-split" aria-hidden="true">
         <span class="chip-bi">Business Intelligence</span>
         <span class="bento-x">×</span>
-        <span class="chip-cr">Festival Photography</span>
+        <span class="chip-cr">Marketing</span>
       </div>
     </div>
 
@@ -680,13 +682,49 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">Polymath 360 · Freemium Studios</span>
-          <h3>Marketing Assistant — Cosmos México</h3>
-          <div class="meta">Mexico City · Dec 2024</div>
+          <span class="track-label">Tomorrowland — Lab of Tomorrow</span>
+          <h3>Content Marketing Producer</h3>
+          <div class="meta">Boom, Belgium · On-site · Jul 2026 (2 weeks)</div>
           <ul>
-            <li>I shot professional-grade photography at <strong>Cosmos México</strong>, one of Latin America's largest science &amp; technology events.</li>
-            <li>I produced content for speakers with a combined <strong>30M+ social following</strong> — Farid Dieck (22M TikTok), Javier Santaolalla (4.2M YouTube), José Luis Crespo (3.7M YouTube).</li>
+            <li>I produced content marketing and audiovisual content across <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland's</a> entertainment-tech ecosystem.</li>
+            <li><strong>I recorded and edited Lab of Tomorrow's most-viral Reel to date.</strong></li>
+            <li>I owned the end-to-end pipeline: filming, editing, post-production, same-day delivery.</li>
           </ul>
+          <div class="skills">Content Production · Video Editing · Interviewing</div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
+        <div class="t-card glass">
+          <span class="track-label"><a href="https://www.linkedin.com/company/coparmexnacional" style="color:inherit">Coparmex</a></span>
+          <h3>Marketing &amp; Communications Coordinator</h3>
+          <div class="meta">COPARMEX University Chapter, ITESM · Mexico City · Dec 2024 – Aug 2025</div>
+          <ul><li>I collaborated directly with the President and Vice President on strategic initiatives, aligned with Tec de Monterrey's ranking as the #1 university in Mexico (QS World University Rankings 2024).</li></ul>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
+        <div class="t-card glass company-card">
+          <div class="company-head">
+            <span class="track-label">Restaurant / Hospitality</span>
+            <h3>Piso 40</h3>
+            <div class="company-total">Jan 2024 – May 2025 · 1 year 5 months, Mexico City</div>
+          </div>
+          <div class="role-block">
+            <h4>Content Marketing Specialist</h4>
+            <div class="meta">May 2024 – May 2025</div>
+            <ul>
+              <li>I built the digital brand and social presence from scratch for Chef Aarón Oldak's restaurant (Oldak has collaborated with NASA and holds a Master's from Harvard).</li>
+              <li>I directed content creation sessions with the operations team for a consistent digital brand image, and used engagement data to refine strategy.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h4>Content Marketing Project Associate</h4>
+            <div class="meta">Jan 2024 – May 2024</div>
+            <ul><li>I coordinated photo and video sessions, adjusting content based on client feedback to improve reach and engagement.</li></ul>
+          </div>
         </div>
       </div>
 
@@ -745,15 +783,13 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">Tomorrowland — Lab of Tomorrow</span>
-          <h3>Content Marketing Producer</h3>
-          <div class="meta">Boom, Belgium · On-site · Jul 2026 (2 weeks)</div>
+          <span class="track-label">Polymath 360 · Freemium Studios</span>
+          <h3>Marketing Assistant — Cosmos México</h3>
+          <div class="meta">Mexico City · Dec 2024</div>
           <ul>
-            <li>I produced content marketing and audiovisual content across <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland's</a> entertainment-tech ecosystem.</li>
-            <li><strong>I recorded and edited Lab of Tomorrow's most-viral Reel to date.</strong></li>
-            <li>I owned the end-to-end pipeline: filming, editing, post-production, same-day delivery.</li>
+            <li>I shot professional-grade photography at <strong>Cosmos México</strong>, one of Latin America's largest science &amp; technology events.</li>
+            <li>I produced content for speakers with a combined <strong>30M+ social following</strong> — Farid Dieck (22M TikTok), Javier Santaolalla (4.2M YouTube), José Luis Crespo (3.7M YouTube).</li>
           </ul>
-          <div class="skills">Content Production · Video Editing · Interviewing</div>
         </div>
       </div>
 
@@ -761,22 +797,33 @@
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass company-card">
           <div class="company-head">
-            <span class="track-label">Restaurant / Hospitality</span>
-            <h3>Piso 40</h3>
-            <div class="company-total">Jan 2024 – May 2025 · 1 year 5 months, Mexico City</div>
+            <span class="track-label"><a href="https://www.linkedin.com/school/tecdemonterrey/" style="color:inherit">Tecnológico de Monterrey</a></span>
+            <h3><img class="co-logo" src="https://logo.clearbit.com/tec.mx" alt="" loading="lazy" onerror="this.style.display='none'">Digital Marketing &amp; Content roles</h3>
+            <div class="company-fact">#1 university in Mexico, Top 5 in Latin America (QS 2024)</div>
+            <div class="company-total">Aug 2022 – Dec 2024, Mexico City</div>
           </div>
           <div class="role-block">
-            <h4>Content Marketing Specialist</h4>
-            <div class="meta">May 2024 – May 2025</div>
+            <h4>Digital Marketing Project Assistant — DM, CSF</h4>
+            <div class="meta">Sep 2024 – Dec 2024 · 4 months</div>
+            <ul><li>I spearheaded coverage of BOWLS 2024, a flagship leadership summit, and managed multimedia content for its "Shark Tank Live" session with the CEO of HENCO Global.</li></ul>
+          </div>
+          <div class="role-block">
+            <h4>Digital Marketing Assistant, BeLAE — ITESM CCM</h4>
+            <div class="meta">Nov 2024 · 1 month</div>
+            <ul><li>I coordinated multimedia content for "Welcome to the Future," an AI and business leadership event with speakers from Google, Microsoft and Thrust Co.</li></ul>
+          </div>
+          <div class="role-block">
+            <h4>Marketing Communications Intern — Story Tellers On-Campus Program</h4>
+            <div class="meta">Aug 2022 – Jul 2024 · 2 years</div>
             <ul>
-              <li>I built the digital brand and social presence from scratch for Chef Aarón Oldak's restaurant (Oldak has collaborated with NASA and holds a Master's from Harvard).</li>
-              <li>I directed content creation sessions with the operations team for a consistent digital brand image, and used engagement data to refine strategy.</li>
+              <li>I managed digital marketing strategies and content creation across Instagram, Facebook and Twitter, and wrote journalistic content for the CONECTA platform.</li>
+              <li>I managed content marketing for high-profile brands including <strong>Holon IQ, Starbucks Mexico and NFL Mexico</strong>, using Adobe Premiere, Photoshop and Lightroom.</li>
             </ul>
           </div>
           <div class="role-block">
-            <h4>Content Marketing Project Associate</h4>
-            <div class="meta">Jan 2024 – May 2024</div>
-            <ul><li>I coordinated photo and video sessions, adjusting content based on client feedback to improve reach and engagement.</li></ul>
+            <h4>Social Media &amp; Communications Staff — Blua Media, CSF</h4>
+            <div class="meta">Jan 2023 – Dec 2023 · 12 months</div>
+            <ul><li>I was part of the social media team for Avant Match, one of Blua Media's most-watched projects, and covered high-profile conferences including "The Magic of Storytelling x Disney."</li></ul>
           </div>
         </div>
       </div>
@@ -798,51 +845,6 @@
           <h3>Digital Marketing Project Assistant</h3>
           <div class="meta">Mexico City · Sep 2024</div>
           <ul><li>I led the full video content production for a jewelry brand's latest collection, using Premiere Pro for advanced editing, color correction and sound design.</li></ul>
-        </div>
-      </div>
-
-      <div class="t-item">
-        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
-        <div class="t-card glass">
-          <span class="track-label"><a href="https://www.linkedin.com/company/coparmexnacional" style="color:inherit">Coparmex</a></span>
-          <h3>Marketing &amp; Communications Coordinator</h3>
-          <div class="meta">COPARMEX University Chapter, ITESM · Mexico City · Dec 2024 – Aug 2025</div>
-          <ul><li>I collaborated directly with the President and Vice President on strategic initiatives, aligned with Tec de Monterrey's ranking as the #1 university in Mexico (QS World University Rankings 2024).</li></ul>
-        </div>
-      </div>
-
-      <div class="t-item">
-        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
-        <div class="t-card glass company-card">
-          <div class="company-head">
-            <span class="track-label"><a href="https://www.linkedin.com/school/tecdemonterrey/" style="color:inherit">Tecnológico de Monterrey</a></span>
-            <h3><img class="co-logo" src="https://logo.clearbit.com/tec.mx" alt="" loading="lazy" onerror="this.style.display='none'">Digital Marketing &amp; Content roles</h3>
-            <div class="company-fact">#1 university in Mexico, Top 5 in Latin America (QS 2024)</div>
-            <div class="company-total">Aug 2022 – Dec 2024, Mexico City</div>
-          </div>
-          <div class="role-block">
-            <h4>Marketing Communications Intern — Story Tellers On-Campus Program</h4>
-            <div class="meta">Aug 2022 – Jul 2024 · 2 years</div>
-            <ul>
-              <li>I managed digital marketing strategies and content creation across Instagram, Facebook and Twitter, and wrote journalistic content for the CONECTA platform.</li>
-              <li>I managed content marketing for high-profile brands including <strong>Holon IQ, Starbucks Mexico and NFL Mexico</strong>, using Adobe Premiere, Photoshop and Lightroom.</li>
-            </ul>
-          </div>
-          <div class="role-block">
-            <h4>Digital Marketing Project Assistant — DM, CSF</h4>
-            <div class="meta">Sep 2024 – Dec 2024 · 4 months</div>
-            <ul><li>I spearheaded coverage of BOWLS 2024, a flagship leadership summit, and managed multimedia content for its "Shark Tank Live" session with the CEO of HENCO Global.</li></ul>
-          </div>
-          <div class="role-block">
-            <h4>Digital Marketing Assistant, BeLAE — ITESM CCM</h4>
-            <div class="meta">Nov 2024 · 1 month</div>
-            <ul><li>I coordinated multimedia content for "Welcome to the Future," an AI and business leadership event with speakers from Google, Microsoft and Thrust Co.</li></ul>
-          </div>
-          <div class="role-block">
-            <h4>Social Media &amp; Communications Staff — Blua Media, CSF</h4>
-            <div class="meta">Jan 2023 – Dec 2023 · 12 months</div>
-            <ul><li>I was part of the social media team for Avant Match, one of Blua Media's most-watched projects, and covered high-profile conferences including "The Magic of Storytelling x Disney."</li></ul>
-          </div>
         </div>
       </div>
 
@@ -1062,39 +1064,42 @@
   (function () {
     var track = document.getElementById('photoTrack');
     if (!track) return;
+    var logo = function (domain) {
+      return '<img class="co-logo" src="https://logo.clearbit.com/' + domain + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
+    };
     var photos = [
       { src: 'ludovic-delot-tomorrowland-photographer.jpg', featured: true,
         alt: 'Ludovic Delot, festival photographer, shooting the main stage at Tomorrowland with a Canon camera and crew lanyard',
-        caption: 'Shooting the main stage at <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland</a>' },
+        caption: logo('tomorrowland.com') + '<a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland</a>, Boom — shooting the main stage, Jul 2026' },
       { src: 'ludovic-delot-ai-hackathon-google.jpg',
         alt: 'Ludovic Delot and his team celebrating their AI Hackathon win at Google Mexico',
-        caption: 'AI Hackathon - <a href="https://www.linkedin.com/company/google">Google</a>' },
+        caption: logo('google.com') + 'AI Hackathon at <a href="https://www.linkedin.com/company/google">Google</a> Mexico' },
       { src: 'ludovic-delot-vive-latino-photographer.jpg',
         alt: 'Ludovic Delot taking a selfie with his camera while photographing the crowd at Vive Latino festival',
-        caption: 'Shooting <a href="https://www.linkedin.com/company/ocesa">Vive Latino</a>' },
+        caption: logo('ocesa.com.mx') + 'On assignment at <a href="https://www.linkedin.com/company/ocesa">Vive Latino</a> 2024' },
       { src: 'ludovic-delot-festival-arre-photo-team.jpg',
         alt: 'Ludovic Delot with the official Festival Arre photo team in front of the main stage',
-        caption: 'Festival Photo Team — <a href="https://www.linkedin.com/company/ocesa">Arre</a>' },
+        caption: logo('ocesa.com.mx') + 'Official photo team, Festival Arre 2024' },
       { src: 'ludovic-delot-edc-mexico-2025.jpg',
         alt: 'Ludovic Delot posing with his camera at the EDC Mexico 2025 main stage',
-        caption: 'Covering EDC México 2025' },
+        caption: 'Content Manager, EDC México 2025' },
       { src: 'ludovic-delot-vogue-mexico-latam.jpg',
         alt: 'Ludovic Delot filming with a gimbal-mounted camera for Vogue Mexico and Latin America',
-        caption: 'Shooting for Vogue México y LatAm' },
+        caption: 'Filming for Vogue México y LatAm, Casa Wabi' },
       { src: 'ludovic-delot-aws-summit.jpg',
         alt: "Ludovic Delot's AWS Summit 2024 attendee badge at the Mexico City event",
-        caption: 'AWS Summit, Mexico City' },
+        caption: logo('aws.amazon.com') + 'AWS Summit 2024, Mexico City' },
       { src: 'ludovic-delot-projectype-el-financiero.jpg',
         alt: 'Ludovic Delot and the Projectype team featured in El Financiero newspaper',
-        caption: '<a href="#entrepreneurship">Projectype</a> featured in El Financiero' },
+        caption: '<a href="#entrepreneurship">Projectype</a> featured in El Financiero / Bloomberg' },
       { src: 'ludovic-delot-tec-monterrey-inc-mty.jpg',
         alt: 'Ludovic Delot representing Tec de Monterrey Campus Ciudad de México at INC MTY',
-        caption: 'Representing <a href="https://www.linkedin.com/school/tecdemonterrey/">Tec de Monterrey</a> at INC MTY' }
+        caption: logo('tec.mx') + 'Representing Tec CCM at INC MTY 2023' }
     ];
     function renderSet() {
       return photos.map(function (p) {
         return '<figure class="photo-card' + (p.featured ? ' featured' : '') + '">' +
-          '<img src="assets/' + p.src + '" alt="' + p.alt + '" loading="lazy">' +
+          '<div class="frame"><img src="assets/' + p.src + '" alt="' + p.alt + '" loading="lazy"></div>' +
           '<figcaption>' + p.caption + '</figcaption></figure>';
       }).join('');
     }
