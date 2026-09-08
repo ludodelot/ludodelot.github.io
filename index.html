@@ -36,7 +36,12 @@
   "name": "Ludovic Delot",
   "alternateName": "Ludovic Delot Bravo",
   "url": "https://ludodelot.github.io/",
-  "image": "https://ludodelot.github.io/assets/portrait.jpg",
+  "image": [
+    "https://ludodelot.github.io/assets/portrait.jpg",
+    "https://ludodelot.github.io/assets/ludovic-delot-tomorrowland-photographer.jpg",
+    "https://ludodelot.github.io/assets/ludovic-delot-ai-hackathon-google.jpg",
+    "https://ludodelot.github.io/assets/ludovic-delot-vive-latino-photographer.jpg"
+  ],
   "jobTitle": "Business Intelligence & Data Analyst",
   "description": "Business Intelligence & Data Analyst at LVMH, with prior experience at Groupe SEB and El Puerto de Liverpool. Also a festival photographer and content producer for Live Nation/OCESA and Tomorrowland's Lab of Tomorrow, and founder of Delot Media.",
   "email": "mailto:contactoludovicdelot@gmail.com",
@@ -276,7 +281,11 @@
   .bento-intl { grid-column: span 1; }
   .bento-intl .countries { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
   .bento-intl .countries span { font-size: 0.78rem; font-weight: 600; color: var(--ink-soft); background: var(--icon-btn-hover); padding: 4px 10px; border-radius: 999px; }
-  .bento-companies { grid-column: span 2; }
+  .bento-companies { grid-column: span 4; }
+  .bento-companies .row { font-size: 0.92rem; margin-bottom: 9px; align-items: center; }
+  .bento-companies .row:last-child { margin-bottom: 0; }
+  .co-logo { width: 20px; height: 20px; border-radius: 5px; object-fit: contain; background: #fff; padding: 2px; box-shadow: 0 0 0 1px var(--border); }
+  .company-head h3 .co-logo, .t-card > h3 .co-logo { width: 22px; height: 22px; border-radius: 6px; object-fit: contain; background: #fff; padding: 2px; box-shadow: 0 0 0 1px var(--border); vertical-align: -5px; margin-right: 4px; }
   .bento-companies .pill-group { margin-top: 4px; }
 
   .bento-wide { grid-column: span 4; overflow: hidden; }
@@ -332,6 +341,13 @@
   .t-card li { margin-bottom: 5px; color: var(--ink-soft); font-size: 0.94rem; }
   .t-card li strong { color: var(--ink); }
   .t-card .skills { margin-top: 10px; font-size: 0.8rem; color: var(--sky); }
+  .company-head h3 { margin: 0 0 4px; font-size: 1.1rem; }
+  .company-fact { font-size: 0.85rem; color: var(--sky); font-weight: 600; margin-bottom: 2px; }
+  .company-total { color: var(--ink-soft); font-size: 0.85rem; margin-bottom: 14px; }
+  .role-block { padding-top: 18px; margin-top: 18px; border-top: 1px dashed var(--border); }
+  .role-block:first-of-type { padding-top: 0; margin-top: 0; border-top: none; }
+  .role-block h4 { margin: 0 0 2px; font-size: 0.98rem; color: var(--ink); font-weight: 700; }
+  .role-block .meta { margin-bottom: 8px; }
 
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
@@ -339,6 +355,9 @@
   .pill-group { display: flex; flex-wrap: wrap; gap: 9px; }
   .pill { background: var(--glass); color: var(--blue-2); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); padding: 7px 14px; border-radius: 999px; font-size: 0.83rem; font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
 
+  .featured-photo { margin: 0 0 20px; border-radius: 24px; overflow: hidden; padding: 0; }
+  .featured-photo img { width: 100%; max-height: 560px; object-fit: cover; object-position: 50% 20%; display: block; }
+  .featured-photo figcaption { padding: 16px 20px; font-size: 1rem; font-weight: 700; color: var(--ink); }
   .photo-strip { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; }
   .photo-card { margin: 0; flex: 0 0 min(340px, 80vw); border-radius: 20px; overflow: hidden; padding: 0; scroll-snap-align: start; }
   .photo-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
@@ -404,7 +423,7 @@
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="portrait-wrap"><img src="assets/portrait.jpg" alt="Portrait of Ludovic Delot" width="168" height="168"></div>
+    <div class="portrait-wrap"><img src="assets/portrait.jpg" alt="Ludovic Delot — Business Intelligence & Data Analyst and festival photographer, portrait" width="168" height="168"></div>
     <h1>Ludovic Delot</h1>
     <p class="tagline">Reads the numbers. Shoots the moment.</p>
     <p class="meta-row">
@@ -430,7 +449,7 @@
   <section class="bento" id="overview" aria-label="Overview">
     <div class="bento-cell bento-story reveal">
       <span class="bento-kicker"><svg class="icon"><use href="#i-sparkle"/></svg> Two ways of seeing</span>
-      <p>By day, <strong>Ludovic turns 25,000+ SKU–store rows into a single Power BI number</strong> a Marketing lead can act on. By night, he's in the pit at Vive Latino <strong>turning one frame into the shot a festival remembers.</strong> Same instinct — find the signal, frame it so someone else can see it instantly — pointed at two different canvases.</p>
+      <p>By day, <strong>I turn 25,000+ SKU–store rows into a single Power BI number</strong> a Marketing lead can act on. By night, I'm in the pit at <a href="https://www.linkedin.com/company/ocesa">Vive Latino</a> <strong>turning one frame into the shot a festival remembers.</strong> Same instinct — find the signal, frame it so someone else can see it instantly — pointed at two different canvases.</p>
       <div class="bento-split" aria-hidden="true">
         <span class="chip-bi">Business Intelligence</span>
         <span class="bento-x">×</span>
@@ -447,13 +466,14 @@
     <div class="bento-cell bento-stat reveal"><div class="num">160+</div><div class="label">Delot Media clients</div></div>
 
     <div class="bento-cell bento-years reveal">
-      <div class="num">4.1</div>
+      <div class="num" id="yearsExp">4.1</div>
       <div class="label">Years of professional experience</div>
     </div>
 
     <div class="bento-cell bento-info bento-intl reveal">
       <h3><svg class="icon"><use href="#i-globe"/></svg> International Experience</h3>
       <div class="row"><strong>Global BI/Data Products</strong></div>
+      <div class="row" style="margin-top:2px;">Worked from</div>
       <div class="countries">
         <span><svg class="icon flag"><use href="#flag-mx"/></svg> Mexico</span>
         <span><svg class="icon flag"><use href="#flag-fr"/></svg> France</span>
@@ -464,10 +484,12 @@
 
     <div class="bento-cell bento-info bento-companies reveal">
       <h3><svg class="icon"><use href="#i-building"/></svg> Companies</h3>
-      <div class="pill-group">
-        <span class="pill">LVMH</span><span class="pill">Groupe SEB</span><span class="pill">El Puerto de Liverpool</span>
-        <span class="pill">Live Nation / OCESA</span><span class="pill">Tomorrowland</span><span class="pill">Tec de Monterrey (EGADE)</span>
-      </div>
+      <div class="row"><img class="co-logo" src="https://logo.clearbit.com/lvmh.com" alt="" loading="lazy" onerror="this.style.display='none'"><strong><a href="https://www.linkedin.com/company/lvmh">LVMH</a></strong> — world's largest luxury goods company</div>
+      <div class="row"><img class="co-logo" src="https://logo.clearbit.com/groupeseb.com" alt="" loading="lazy" onerror="this.style.display='none'"><strong><a href="https://www.linkedin.com/company/groupe-seb">Groupe SEB</a></strong> — €8B+ sales, world leader in small domestic equipment</div>
+      <div class="row"><img class="co-logo" src="https://logo.clearbit.com/liverpool.com.mx" alt="" loading="lazy" onerror="this.style.display='none'"><strong><a href="https://www.linkedin.com/company/elpuertodeliverpool">El Puerto de Liverpool</a></strong> — Mexico's largest department store group</div>
+      <div class="row"><img class="co-logo" src="https://logo.clearbit.com/livenation.com" alt="" loading="lazy" onerror="this.style.display='none'"><strong><a href="https://www.linkedin.com/company/live-nation">Live Nation</a> / <a href="https://www.linkedin.com/company/ocesa">OCESA</a></strong> — world's largest live entertainment company</div>
+      <div class="row"><img class="co-logo" src="https://logo.clearbit.com/tomorrowland.com" alt="" loading="lazy" onerror="this.style.display='none'"><strong><a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland</a></strong> — world's largest electronic music festival</div>
+      <div class="row"><img class="co-logo" src="https://logo.clearbit.com/tec.mx" alt="" loading="lazy" onerror="this.style.display='none'"><strong><a href="https://www.linkedin.com/school/tecdemonterrey/">Tec de Monterrey</a></strong> — #1 university in Mexico, Top 5 in Latin America (QS 2024)</div>
     </div>
 
     <div class="bento-cell bento-wide reveal">
@@ -482,44 +504,74 @@
     <h2><svg class="icon"><use href="#i-dot"/></svg>About</h2>
     <div class="glass card-pad">
       <p class="lead">
-        <strong>Ludovic Delot</strong> is a Business Intelligence &amp; Data Analyst currently working as
+        I'm a Business Intelligence &amp; Data Analyst currently working as
         <strong>Data &amp; BI Intern at <a href="https://www.linkedin.com/company/lvmh">LVMH</a></strong>,
-        where he scaled a reporting product from 4 to 20+ Power BI dashboards on a 25-table data model he designed,
-        standardizing KPIs across Marketing, Commercial, Finance and IT teams. Before LVMH, he worked in CPFR
+        where I scaled a reporting product from 4 to 20+ Power BI dashboards on a 25-table data model I designed,
+        standardizing KPIs across Marketing, Commercial, Finance and IT teams. Before LVMH, I worked in CPFR
         supply-chain forecasting across 25,000+ SKU-store combinations at
         <a href="https://www.linkedin.com/company/groupe-seb">Groupe SEB</a>, and led RPA/automation ROI evaluation
         at <a href="https://www.linkedin.com/company/elpuertodeliverpool">El Puerto de Liverpool</a>.
       </p>
       <p class="lead">
-        In parallel, he runs a second professional track in content production — festival photography for
+        In parallel, I run a second professional track in content production — festival photography for
         <a href="https://www.linkedin.com/company/live-nation">Live Nation</a>/<a href="https://www.linkedin.com/company/ocesa">OCESA</a>
         (Vive Latino, Festival Arre), Content Marketing Producer for
-        <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland's</a> Lab of Tomorrow, and his own
-        studio, <strong>Delot Media</strong>, founded in 2019 with 160+ clients served.
+        <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland's</a> Lab of Tomorrow, and my own
+        studio, <strong><a href="https://www.instagram.com/delot_/">Delot Media</a></strong>, founded in 2019 with 160+ clients served.
       </p>
       <p class="lead">
-        He holds an <strong>MSc in International Management &amp; Finance</strong> from
+        I hold an <strong>MSc in International Management &amp; Finance</strong> from
         <a href="https://www.linkedin.com/school/renneschoolofbusiness/">Rennes School of Business</a> and a
         <strong>BSc in Business Intelligence with a Minor in Artificial Intelligence</strong> from
         <a href="https://www.linkedin.com/school/tecdemonterrey/">Tecnológico de Monterrey</a>.
       </p>
       <p class="lead" style="display:flex;align-items:center;gap:8px;">
         <svg class="icon flag"><use href="#flag-mx"/></svg><svg class="icon flag"><use href="#flag-fr"/></svg>
-        Based in Mexico City, with dual Mexican &amp; French nationality.
+        I'm based in Mexico City, with dual Mexican &amp; French nationality.
       </p>
     </div>
   </section>
 
   <section class="section reveal" id="highlights" aria-label="In the field">
     <h2><svg class="icon"><use href="#i-camera"/></svg>In the Field</h2>
+
+    <figure class="featured-photo glass">
+      <img src="assets/ludovic-delot-tomorrowland-photographer.jpg" width="1600" height="2000" alt="Ludovic Delot, festival photographer, shooting the main stage at Tomorrowland with a Canon camera and crew lanyard" loading="lazy">
+      <figcaption>Ludovic Delot shooting the main stage at Tomorrowland, Boom, Belgium</figcaption>
+    </figure>
+
     <div class="photo-strip">
       <figure class="photo-card glass">
-        <img src="assets/hackathon-google.jpg" alt="Ludovic Delot's team celebrating a hackathon win at Google Mexico" loading="lazy">
-        <figcaption>Google Mexico — hackathon win with the team</figcaption>
+        <img src="assets/ludovic-delot-ai-hackathon-google.jpg" alt="Ludovic Delot and his team celebrating their AI Hackathon win at Google Mexico" loading="lazy">
+        <figcaption>AI Hackathon - <a href="https://www.linkedin.com/company/google">Google</a></figcaption>
       </figure>
       <figure class="photo-card glass">
-        <img src="assets/hackathon-google.jpg" alt="Ludovic Delot's team celebrating a hackathon win at Google Mexico" loading="lazy">
-        <figcaption>Google Mexico — hackathon win with the team</figcaption>
+        <img src="assets/ludovic-delot-vive-latino-photographer.jpg" alt="Ludovic Delot taking a selfie with his camera while photographing the crowd at Vive Latino festival" loading="lazy">
+        <figcaption>Shooting <a href="https://www.linkedin.com/company/ocesa">Vive Latino</a></figcaption>
+      </figure>
+      <figure class="photo-card glass">
+        <img src="assets/ludovic-delot-festival-arre-photo-team.jpg" alt="Ludovic Delot with the official Festival Arre photo team in front of the main stage" loading="lazy">
+        <figcaption>Festival Photo Team — <a href="https://www.linkedin.com/company/ocesa">Arre</a></figcaption>
+      </figure>
+      <figure class="photo-card glass">
+        <img src="assets/ludovic-delot-edc-mexico-2025.jpg" alt="Ludovic Delot posing with his camera at the EDC Mexico 2025 main stage" loading="lazy">
+        <figcaption>Covering EDC México 2025</figcaption>
+      </figure>
+      <figure class="photo-card glass">
+        <img src="assets/ludovic-delot-vogue-mexico-latam.jpg" alt="Ludovic Delot filming with a gimbal-mounted camera for Vogue Mexico and Latin America" loading="lazy">
+        <figcaption>Shooting for Vogue México y LatAm</figcaption>
+      </figure>
+      <figure class="photo-card glass">
+        <img src="assets/ludovic-delot-aws-summit.jpg" alt="Ludovic Delot's AWS Summit 2024 attendee badge at the Mexico City event" loading="lazy">
+        <figcaption>AWS Summit, Mexico City</figcaption>
+      </figure>
+      <figure class="photo-card glass">
+        <img src="assets/ludovic-delot-projectype-el-financiero.jpg" alt="Ludovic Delot and the Projectype team featured in El Financiero newspaper" loading="lazy">
+        <figcaption><a href="#entrepreneurship">Projectype</a> featured in El Financiero</figcaption>
+      </figure>
+      <figure class="photo-card glass">
+        <img src="assets/ludovic-delot-tec-monterrey-inc-mty.jpg" alt="Ludovic Delot representing Tec de Monterrey Campus Ciudad de México at INC MTY" loading="lazy">
+        <figcaption>Representing <a href="https://www.linkedin.com/school/tecdemonterrey/">Tec de Monterrey</a> at INC MTY</figcaption>
       </figure>
     </div>
   </section>
@@ -532,55 +584,64 @@
 
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
-        <div class="t-card glass">
-          <span class="track-label">LVMH · Luxury / Beauty</span>
-          <h3>Data &amp; Business Intelligence (Power BI) Intern</h3>
-          <div class="meta">Iberia &amp; Mexico + Global Dashboards · Madrid, Spain · Jun 2026 – present</div>
-          <ul>
-            <li>Support BI project management across international Business, Data, IT, Beauty Tech and Business Analyst teams — coordinating requirements, KPI definitions, and production delivery.</li>
-            <li>Document entity-relationship models across Google Cloud Platform and SharePoint sources; standardize KPI definitions, business rules and data quality controls.</li>
-            <li>Build DAX measures and Python ETL automation; use Microsoft Copilot for AI-assisted model validation.</li>
-            <li><strong>Led training for 3 people</strong> to automate the UK ETL process.</li>
-          </ul>
-          <div class="skills">Power BI · DAX · SQL · Python · Entity-Relationship Modeling · Microsoft Copilot</div>
+        <div class="t-card glass company-card">
+          <div class="company-head">
+            <span class="track-label">Luxury / Beauty</span>
+            <h3><img class="co-logo" src="https://logo.clearbit.com/lvmh.com" alt="" loading="lazy" onerror="this.style.display='none'"><a href="https://www.linkedin.com/company/lvmh">LVMH</a></h3>
+            <div class="company-fact">Europe's largest company by market capitalization</div>
+            <div class="company-total">Feb 2025 – present · 1 year 8 months, Mexico → France (remote) → Madrid, Spain</div>
+          </div>
+
+          <div class="role-block">
+            <h4>Data &amp; Business Intelligence (Power BI) Intern</h4>
+            <div class="meta">Iberia &amp; Mexico + Global Dashboards · Madrid, Spain · Jun 2026 – present</div>
+            <ul>
+              <li>I support BI project management across international Business, Data, IT, Beauty Tech and Business Analyst teams, coordinating requirements, SQL/query logic, KPI definitions and production delivery.</li>
+              <li>I act as the business-to-technical liaison, translating stakeholder needs into technical specs for scalable Power BI models, dashboards and reporting workflows.</li>
+              <li>I manage and document entity-relationship models across Google Cloud Platform, SharePoint and HQ data marts, standardizing KPI definitions, business rules and data-quality controls.</li>
+              <li>I build DAX measures and Python ETL automation, and use Microsoft Copilot inside Power BI for AI-assisted model validation and inconsistency detection.</li>
+              <li>I designed HTML cards and custom Power BI visual components to improve dashboard UX and executive KPI storytelling.</li>
+              <li><strong>I led training for 3 people</strong> to automate the UK ETL process.</li>
+            </ul>
+            <div class="skills">Power BI · DAX · SQL · Python · Entity-Relationship Modeling · Microsoft Copilot</div>
+          </div>
+
+          <div class="role-block">
+            <h4>Commercial Business Analyst Trainee (Remote)</h4>
+            <div class="meta">France, managing Mexico's BI operation · Aug 2025 – Jun 2026</div>
+            <ul>
+              <li>I proposed and led the <strong>Excel-to-Power BI transformation</strong> for Loewe and Acqua di Parma, replacing manual workflows with a self-service BI product used by Marketing, Commercial, Retail and Maison HQ in Italy and Spain.</li>
+              <li>I managed Mexico's BI reporting operations remotely from France, ensuring daily continuity and HQ-ready outputs across time zones.</li>
+              <li>I <strong>scaled the product from 4 to 20+ automated Power BI dashboards</strong>, establishing Power BI as Mexico's official single source of truth.</li>
+              <li>I designed a <strong>25-table entity-relationship model</strong> connecting sell-out, stock, e-commerce, POS, retailer data, launches, forecasts and quotas.</li>
+              <li>I <strong>cut reporting prep time from hours to minutes</strong> by automating cleaning and transformation in Python, and built the MTD Summary dashboard used by the GM LatAm and senior Key Account Managers to track sales and forecast progress.</li>
+            </ul>
+          </div>
+
+          <div class="role-block">
+            <h4>Commercial Business Analyst Trainee</h4>
+            <div class="meta">Mexico City · Feb 2025 – Aug 2025</div>
+            <ul>
+              <li>I partnered directly with the General Manager, Commercial, Marketing and Retail teams to uncover reporting pain points and translate them into data requirements.</li>
+              <li>I built the <strong>first 4 Power BI dashboards</strong> for Loewe and Acqua di Parma — the foundation later scaled to 20+.</li>
+              <li>I coordinated product master data and new-item setup for two major retailers (Chedraui and Elektra), aligning SKU data, pricing and launch status.</li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
-          <h3>Commercial Business Analyst Trainee (Remote)</h3>
-          <div class="meta">France, managing Mexico's BI operation · Aug 2025 – Jun 2026</div>
-          <ul>
-            <li>Led the <strong>Excel-to-Power BI transformation</strong> for Loewe and Acqua di Parma, replacing manual workflows with a self-service BI product.</li>
-            <li><strong>Scaled the product from 4 to 20+ automated Power BI dashboards</strong>, establishing Power BI as Mexico's official single source of truth.</li>
-            <li>Designed a <strong>25-table entity-relationship model</strong> connecting sell-out, stock, e-commerce, POS, retailer data, forecasts and quotas.</li>
-            <li><strong>Reduced reporting prep time from hours to minutes</strong> via Python automation.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="t-item">
-        <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
-        <div class="t-card glass">
-          <h3>Commercial Business Analyst Trainee</h3>
-          <div class="meta">Mexico City · Feb 2025 – Aug 2025</div>
-          <ul>
-            <li>Built the <strong>first 4 Power BI dashboards</strong> for Loewe and Acqua di Parma — later scaled to 20+.</li>
-            <li>Coordinated product master data and new-item setup for Chedraui and Elektra.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="t-item">
-        <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
-        <div class="t-card glass">
-          <span class="track-label">El Puerto de Liverpool · Retail</span>
-          <h3>Automation Business Analyst</h3>
+          <span class="track-label">Retail</span>
+          <h3><img class="co-logo" src="https://logo.clearbit.com/liverpool.com.mx" alt="" loading="lazy" onerror="this.style.display='none'"><a href="https://www.linkedin.com/company/elpuertodeliverpool">El Puerto de Liverpool</a></h3>
+          <div class="company-fact">~€10B+ annual revenue, Mexico's largest department store group</div>
+          <h4 style="margin:6px 0 2px;font-size:1rem;">Automation Business Analyst</h4>
           <div class="meta">Digital Center of Excellence, Finance · Mexico City · Aug 2024 – Feb 2025</div>
           <ul>
-            <li>Led feasibility &amp; <strong>ROI evaluation for a $27,000 USD</strong> enterprise automation tool (UiPath Insights).</li>
-            <li>Designed ROI dashboards for RPA projects and implemented continuous monitoring.</li>
+            <li>I led the feasibility study and <strong>ROI evaluation for a $27,000 USD</strong> enterprise automation tool (UiPath Insights), aligning the case with the company's strategic objectives.</li>
+            <li>I designed ROI dashboards for RPA projects and implemented continuous performance monitoring.</li>
+            <li>I coordinated and analyzed business requirements to identify and prioritize automatable processes across Finance.</li>
           </ul>
           <div class="skills">UiPath · RPA · ROI Analysis</div>
         </div>
@@ -589,12 +650,15 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">Groupe SEB · Consumer Goods, €8B+ sales</span>
-          <h3>National CPFR Supply Chain Data Analyst</h3>
-          <div class="meta">Mexico City (Hybrid) · Feb 2024 – Aug 2024</div>
+          <span class="track-label">Consumer Goods</span>
+          <h3><img class="co-logo" src="https://logo.clearbit.com/groupeseb.com" alt="" loading="lazy" onerror="this.style.display='none'"><a href="https://www.linkedin.com/company/groupe-seb">Groupe SEB</a></h3>
+          <div class="company-fact">€8B+ in global sales, world leader in small domestic equipment</div>
+          <h4 style="margin:6px 0 2px;font-size:1rem;">National CPFR Supply Chain Data Analyst</h4>
+          <div class="meta">Second-largest client in mass retail · Mexico City (Hybrid) · Feb 2024 – Aug 2024</div>
           <ul>
-            <li>Ran CPFR analysis across <strong>25,000+ SKU-store combinations</strong> using Excel and R.</li>
-            <li>Improved operational efficiency across <strong>300+ retail locations</strong> via out-of-stock and inventory analysis.</li>
+            <li>I ran CPFR (Collaborative Planning, Forecasting and Replenishment) analysis across <strong>25,000+ SKU-store combinations</strong> using Excel and R, generating demand-forecasting reports with high granularity.</li>
+            <li>I analyzed out-of-stock products, excess inventory and slow movers, delivering recommendations that <strong>improved operational efficiency across 300+ retail locations</strong>.</li>
+            <li>I collaborated with Sales, Marketing, Supply Chain and Planning teams to align strategies and optimize processes through data-driven insights.</li>
           </ul>
           <div class="skills">R · Excel · Data Modeling · ETL · CPFR Methodology</div>
         </div>
@@ -603,12 +667,13 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">EGADE Business School (Tec de Monterrey)</span>
+          <span class="track-label"><a href="https://www.linkedin.com/school/tecdemonterrey/" style="color:inherit">EGADE Business School</a> · Tec de Monterrey</span>
           <h3>Data Analyst Intern</h3>
           <div class="meta">Faculty and Research Intelligence Division · Mexico City · Aug 2024 – Dec 2024</div>
           <ul>
-            <li>Built Power BI dashboards evaluating faculty/researcher performance.</li>
-            <li>Integrated the OpenAI API to classify and categorize academic articles.</li>
+            <li>I developed and maintained interactive Power BI dashboards evaluating faculty and researcher performance — SDG alignment, publication output, tenure status.</li>
+            <li>I used Python for data cleaning, manipulation and exploratory analysis, streamlining workflows for academic insights.</li>
+            <li>I integrated the OpenAI API to classify and categorize academic articles, automating content analysis for the research team.</li>
           </ul>
           <div class="skills">Power BI · Python · OpenAI API</div>
         </div>
@@ -624,13 +689,13 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <h3>Founder — Delot Media</h3>
-          <div class="meta">Mexico City · Aug 2019 – present</div>
+          <h3>Founder — <a href="https://www.instagram.com/delot_/">Delot Media</a></h3>
+          <div class="meta">Mexico City · Aug 2019 – present · 5+ years</div>
           <ul>
-            <li><strong>160+ clients served</strong>, including brands with a combined 350,000+ followers across Instagram and Facebook.</li>
-            <li>Photography, video production, social media strategy and analytics for <strong>10+ simultaneous clients</strong>.</li>
-            <li>Production and management of portrait, product and fashion photo shoots, plus editorial video edits delivered on Adobe Premiere.</li>
-            <li>On-location media coverage at large-scale venues, including <strong>Autódromo Hermanos Rodríguez</strong> and the <strong>Auditorio Nacional's Lunario</strong>.</li>
+            <li>I've served <strong>160+ clients</strong>, including brands with a combined 350,000+ followers across Instagram and Facebook.</li>
+            <li>I handle photography, video production, social media strategy and analytics for <strong>10+ simultaneous clients</strong>, tracking sales and planning production by industry.</li>
+            <li>I produce and manage portrait, product and fashion photo shoots, and edit/retouch with Adobe Photoshop and Lightroom.</li>
+            <li>I've delivered on-location media coverage at large-scale venues, including <strong>Autódromo Hermanos Rodríguez</strong> and the <strong>Auditorio Nacional's Lunario</strong>.</li>
           </ul>
           <div class="skills">Adobe Photoshop · Lightroom · Premiere</div>
         </div>
@@ -643,41 +708,60 @@
           <h3>Marketing Assistant — Cosmos México</h3>
           <div class="meta">Mexico City · Dec 2024</div>
           <ul>
-            <li>Shot professional-grade photography at <strong>Cosmos México</strong>, one of Latin America's largest science &amp; technology events.</li>
-            <li>Produced content for speakers with a combined <strong>30M+ social following</strong> — Farid Dieck (22M TikTok), Javier Santaolalla (4.2M YouTube), José Luis Crespo (3.7M YouTube).</li>
+            <li>I shot professional-grade photography at <strong>Cosmos México</strong>, one of Latin America's largest science &amp; technology events.</li>
+            <li>I produced content for speakers with a combined <strong>30M+ social following</strong> — Farid Dieck (22M TikTok), Javier Santaolalla (4.2M YouTube), José Luis Crespo (3.7M YouTube).</li>
           </ul>
         </div>
       </div>
 
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
+        <div class="t-card glass company-card">
+          <div class="company-head">
+            <span class="track-label">Festival &amp; Concert Business Unit</span>
+            <h3><img class="co-logo" src="https://logo.clearbit.com/livenation.com" alt="" loading="lazy" onerror="this.style.display='none'"><a href="https://www.linkedin.com/company/live-nation">Live Nation Entertainment</a> / <a href="https://www.linkedin.com/company/ocesa">OCESA</a></h3>
+            <div class="company-fact">World's largest live entertainment company</div>
+            <div class="company-total">Feb 2023 – Mar 2025 · 2 years 2 months, Mexico City</div>
+          </div>
+
+          <div class="role-block">
+            <h4>Digital Marketing &amp; Content Photographer, Core Team</h4>
+            <div class="meta">Mar 2024 – Mar 2025</div>
+            <ul>
+              <li>I delivered official festival photography for <strong>Vive Latino 2024</strong> — 12+ headline artists, including Kings of Leon, Billy Idol and Rüfüs Du Sol.</li>
+              <li>I was the <strong>top-performing photographer on day 2 of Festival Arre 2024</strong> — highest post volume on the official account, 9+ headline artists including Belinda and Junior H.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h4>Digital Marketing (Content) Intern — Festival Arre &amp; Vive Latino</h4>
+            <div class="meta">Sep 2024 &amp; Mar 2024 · 1 month each</div>
+            <ul>
+              <li>I played a key role in the digital marketing team for both festivals, capturing vibrant, high-quality moments across digital platforms.</li>
+              <li>I handled roaming photography and key sponsor shots, amplifying each festival's reach and audience engagement in real time.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h4>Press &amp; Media Partner Photographer / Videographer</h4>
+            <div class="meta">Concert &amp; Festival Business Unit · Feb 2023 – Mar 2024</div>
+            <ul>
+              <li>I extended my festival coverage as a press/media partner across <strong>Zamna, Vaivén and Afterlife Mexico City</strong> — artists including Adriatique, Camelphat and Anyma.</li>
+              <li>I operated full-frame cameras under demanding lighting and motion conditions, then edited and color-graded for external press outlets.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">Live Nation Entertainment / OCESA</span>
-          <h3>Digital Marketing &amp; Content Photographer, Core Team</h3>
-          <div class="meta">Festival Business Unit · Mexico City · Mar 2024 – Mar 2025</div>
+          <span class="track-label">EDC México · Freelance</span>
+          <h3>Content Manager, Artist Crew Member &amp; Freelance Producer</h3>
+          <div class="meta">Mexico City · Feb 2024, Feb 2025</div>
           <ul>
-            <li>Official festival photography for <strong>Vive Latino 2024</strong> — 12+ headline artists, incl. Kings of Leon, Billy Idol, Rüfüs Du Sol.</li>
-            <li><strong>Top-performing photographer, day 2 of Festival Arre 2024</strong> — highest post volume on the official account, 9+ headline artists incl. Belinda and Junior H.</li>
-            <li>Extended festival coverage as press/media partner across <strong>Zamna, Vaivén and Afterlife Mexico City</strong> — artists incl. Adriatique, Camelphat, Anyma.</li>
+            <li>I spearheaded the content strategy for international artists' social platforms and covered backstage sets at Electric Daisy Carnival (EDC) México 2024.</li>
+            <li>In 2025, I developed and executed a high-impact digital content strategy for two internationally touring DJs, including one who played Tomorrowland, producing platform-optimized content for Instagram, TikTok and YouTube Shorts.</li>
+            <li>I designed and edited aftermovies and recap videos in Adobe Premiere Pro for both engagements.</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="t-item">
-        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
-        <div class="t-card glass">
-          <h3>Press &amp; Media Partner Photographer/Videographer</h3>
-          <div class="meta">Concert &amp; Festival Business Unit · Feb 2023 – Mar 2024</div>
-          <ul><li>Year-long press/media partner coverage across concerts and festivals.</li></ul>
-        </div>
-      </div>
-
-      <div class="t-item">
-        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
-        <div class="t-card glass">
-          <h3>Freelance Content Manager — EDC México</h3>
-          <div class="meta">Artist labels/management (not OCESA) · Feb 2024, Feb 2025</div>
-          <ul><li>Content strategy, backstage coverage and aftermovies for two internationally touring DJs.</li></ul>
           <div class="skills">Photography · Videography · Adobe Premiere Pro</div>
         </div>
       </div>
@@ -689,9 +773,9 @@
           <h3>Content Marketing Producer</h3>
           <div class="meta">Boom, Belgium · On-site · Jul 2026 (2 weeks)</div>
           <ul>
-            <li>Produced content marketing and audiovisual content across Tomorrowland's entertainment-tech ecosystem.</li>
-            <li><strong>Recorded and edited Lab of Tomorrow's most-viral Reel to date.</strong></li>
-            <li>Owned the end-to-end pipeline: filming, editing, post-production, same-day delivery.</li>
+            <li>I produced content marketing and audiovisual content across <a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland's</a> entertainment-tech ecosystem.</li>
+            <li><strong>I recorded and edited Lab of Tomorrow's most-viral Reel to date.</strong></li>
+            <li>I owned the end-to-end pipeline: filming, editing, post-production, same-day delivery.</li>
           </ul>
           <div class="skills">Content Production · Video Editing · Interviewing</div>
         </div>
@@ -699,11 +783,45 @@
 
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
+        <div class="t-card glass company-card">
+          <div class="company-head">
+            <span class="track-label">Restaurant / Hospitality</span>
+            <h3>Piso 40</h3>
+            <div class="company-total">Jan 2024 – May 2025 · 1 year 5 months, Mexico City</div>
+          </div>
+          <div class="role-block">
+            <h4>Content Marketing Specialist</h4>
+            <div class="meta">May 2024 – May 2025</div>
+            <ul>
+              <li>I built the digital brand and social presence from scratch for Chef Aarón Oldak's restaurant (Oldak has collaborated with NASA and holds a Master's from Harvard).</li>
+              <li>I directed content creation sessions with the operations team for a consistent digital brand image, and used engagement data to refine strategy.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h4>Content Marketing Project Associate</h4>
+            <div class="meta">Jan 2024 – May 2024</div>
+            <ul><li>I coordinated photo and video sessions, adjusting content based on client feedback to improve reach and engagement.</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">Piso 40 · Restaurant / Hospitality</span>
-          <h3>Content Marketing Specialist</h3>
-          <div class="meta">Mexico City · May 2024 – May 2025</div>
-          <ul><li>Built the digital brand and social presence from scratch for Chef Aarón Oldak's restaurant.</li></ul>
+          <span class="track-label">Fundación Casa Wabi AC · for Vogue México</span>
+          <h3>Digital Marketing Project Assistant</h3>
+          <div class="meta">Mexico City · Oct 2024</div>
+          <ul><li>I provided video and photo coverage for Vogue México and Casa Wabi's 10th-anniversary event, leading the video strategy for social media coverage.</li></ul>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
+        <div class="t-card glass">
+          <span class="track-label">NOMADA</span>
+          <h3>Digital Marketing Project Assistant</h3>
+          <div class="meta">Mexico City · Sep 2024</div>
+          <ul><li>I led the full video content production for a jewelry brand's latest collection, using Premiere Pro for advanced editing, color correction and sound design.</li></ul>
         </div>
       </div>
 
@@ -713,7 +831,73 @@
           <span class="track-label"><a href="https://www.linkedin.com/company/coparmexnacional" style="color:inherit">Coparmex</a></span>
           <h3>Marketing &amp; Communications Coordinator</h3>
           <div class="meta">COPARMEX University Chapter, ITESM · Mexico City · Dec 2024 – Aug 2025</div>
-          <ul><li>Collaborated directly with the President and Vice President on strategic initiatives.</li></ul>
+          <ul><li>I collaborated directly with the President and Vice President on strategic initiatives, aligned with Tec de Monterrey's ranking as the #1 university in Mexico (QS World University Rankings 2024).</li></ul>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
+        <div class="t-card glass company-card">
+          <div class="company-head">
+            <span class="track-label"><a href="https://www.linkedin.com/school/tecdemonterrey/" style="color:inherit">Tecnológico de Monterrey</a></span>
+            <h3><img class="co-logo" src="https://logo.clearbit.com/tec.mx" alt="" loading="lazy" onerror="this.style.display='none'">Digital Marketing &amp; Content roles</h3>
+            <div class="company-fact">#1 university in Mexico, Top 5 in Latin America (QS 2024)</div>
+            <div class="company-total">Aug 2022 – Dec 2024, Mexico City</div>
+          </div>
+          <div class="role-block">
+            <h4>Marketing Communications Intern — Story Tellers On-Campus Program</h4>
+            <div class="meta">Aug 2022 – Jul 2024 · 2 years</div>
+            <ul>
+              <li>I managed digital marketing strategies and content creation across Instagram, Facebook and Twitter, and wrote journalistic content for the CONECTA platform.</li>
+              <li>I managed content marketing for high-profile brands including <strong>Holon IQ, Starbucks Mexico and NFL Mexico</strong>, using Adobe Premiere, Photoshop and Lightroom.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h4>Digital Marketing Project Assistant — DM, CSF</h4>
+            <div class="meta">Sep 2024 – Dec 2024 · 4 months</div>
+            <ul><li>I spearheaded coverage of BOWLS 2024, a flagship leadership summit, and managed multimedia content for its "Shark Tank Live" session with the CEO of HENCO Global.</li></ul>
+          </div>
+          <div class="role-block">
+            <h4>Digital Marketing Assistant, BeLAE — ITESM CCM</h4>
+            <div class="meta">Nov 2024 · 1 month</div>
+            <ul><li>I coordinated multimedia content for "Welcome to the Future," an AI and business leadership event with speakers from Google, Microsoft and Thrust Co.</li></ul>
+          </div>
+          <div class="role-block">
+            <h4>Social Media &amp; Communications Staff — Blua Media, CSF</h4>
+            <div class="meta">Jan 2023 – Dec 2023 · 12 months</div>
+            <ul><li>I was part of the social media team for Avant Match, one of Blua Media's most-watched projects, and covered high-profile conferences including "The Magic of Storytelling x Disney."</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
+        <div class="t-card glass company-card">
+          <div class="company-head">
+            <span class="track-label">Emergente Creative Studio</span>
+            <h3>Media Producer &amp; Content Marketing Intern</h3>
+            <div class="company-total">Aug 2023 – Mar 2024 · 8 months, Mexico City</div>
+          </div>
+          <div class="role-block">
+            <h4>Media Producer</h4>
+            <div class="meta">Jan 2024 – Mar 2024</div>
+            <ul><li>I provided expert-level raw media assets to support branding, marketing and storytelling initiatives for various clients.</li></ul>
+          </div>
+          <div class="role-block">
+            <h4>Content Marketing Intern — Ápeira</h4>
+            <div class="meta">Aug 2023 – Feb 2024 · 7 months</div>
+            <ul><li>I created content marketing adapted to different sectors for Ápeira's clients, editing in Adobe Premiere Pro and Photoshop.</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
+        <div class="t-card glass">
+          <span class="track-label">Biointellectus</span>
+          <h3>Marketing Winter Intern</h3>
+          <div class="meta">Mexico City · Dec 2023 – Jan 2024</div>
+          <ul><li>I conducted consumer-behavior market research on sustainable, biodegradable packaging in the confectionery market, presenting findings on brand image and consumer loyalty to key stakeholders.</li></ul>
         </div>
       </div>
 
@@ -887,6 +1071,15 @@
     btnBI.addEventListener('click', function () { setMode('bi'); });
     btnCreative.addEventListener('click', function () { setMode('creative'); });
     setMode(localStorage.getItem('trackMode') || 'bi');
+  })();
+
+  // Years of professional experience, computed live from Aug 2022
+  (function () {
+    var el = document.getElementById('yearsExp');
+    if (!el) return;
+    var start = new Date(2022, 7, 1); // August 2022
+    var years = (Date.now() - start.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+    el.textContent = years.toFixed(1);
   })();
 
   // Skills marquee (duplicated once for seamless loop)

@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://ludodelot.github.io/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/portrait.jpg</image:loc>
+      <image:title>Ludovic Delot — portrait</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/ludovic-delot-tomorrowland-photographer.jpg</image:loc>
+      <image:title>Ludovic Delot shooting the main stage at Tomorrowland</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/ludovic-delot-ai-hackathon-google.jpg</image:loc>
+      <image:title>Ludovic Delot — AI Hackathon, Google Mexico</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/ludovic-delot-vive-latino-photographer.jpg</image:loc>
+      <image:title>Ludovic Delot photographing Vive Latino festival</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/ludovic-delot-festival-arre-photo-team.jpg</image:loc>
+      <image:title>Ludovic Delot with the Festival Arre official photo team</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/ludovic-delot-edc-mexico-2025.jpg</image:loc>
+      <image:title>Ludovic Delot covering EDC México 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/ludovic-delot-vogue-mexico-latam.jpg</image:loc>
+      <image:title>Ludovic Delot filming for Vogue México y Latinoamérica</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/ludovic-delot-aws-summit.jpg</image:loc>
+      <image:title>Ludovic Delot at AWS Summit Mexico City</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/ludovic-delot-projectype-el-financiero.jpg</image:loc>
+      <image:title>Ludovic Delot and Projectype featured in El Financiero</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ludodelot.github.io/assets/ludovic-delot-tec-monterrey-inc-mty.jpg</image:loc>
+      <image:title>Ludovic Delot representing Tec de Monterrey at INC MTY</image:title>
+    </image:image>
   </url>
 </urlset>
