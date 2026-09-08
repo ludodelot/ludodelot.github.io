@@ -67,7 +67,7 @@
   ],
   "knowsAbout": [
     "Business Intelligence", "Power BI", "Data Analysis", "DAX", "SQL", "Python",
-    "Supply Chain Analytics", "CPFR", "RPA", "KPI Governance",
+    "Supply Chain Analytics", "CPFR", "RPA", "KPI Governance", "Artificial Intelligence",
     "Photography", "Videography", "Content Marketing", "Festival Production"
   ],
   "sameAs": [
@@ -88,54 +88,53 @@
     --ink: #101826;
     --ink-soft: #4B5B78;
     --bg: #F3F6FB;
-    --bg-2: #E7EDF7;
     --card: #FFFFFF;
     --glass: rgba(255,255,255,0.55);
-    --glass-strong: rgba(255,255,255,0.72);
     --glass-border: rgba(255,255,255,0.6);
     --glass-shadow: rgba(20,40,80,0.14);
     --border: #DCE4F0;
-    --accent: #0A66C2;
+    --accent: #2E86DE;
+    --accent-ink: #0B3C89;
+    --warm: #D9773F;
+    --warm-ink: #B3552B;
     --ring: 0 0 0 1px rgba(255,255,255,0.5) inset;
+    --icon-btn-hover: rgba(46,134,222,0.1);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #060B16;
-      --bg-2: #0A1220;
       --card: #101B30;
       --ink: #ECF2FB;
       --ink-soft: #A6B8D6;
       --border: #223559;
       --sky: #8CA3C9;
       --glass: rgba(20,32,58,0.45);
-      --glass-strong: rgba(24,38,66,0.62);
       --glass-border: rgba(255,255,255,0.14);
       --glass-shadow: rgba(0,0,0,0.45);
       --ring: 0 0 0 1px rgba(255,255,255,0.08) inset;
+      --accent-ink: #7FB3F0;
+      --icon-btn-hover: rgba(127,179,240,0.14);
     }
   }
   :root[data-theme="dark"] {
     --bg: #060B16;
-    --bg-2: #0A1220;
     --card: #101B30;
     --ink: #ECF2FB;
     --ink-soft: #A6B8D6;
     --border: #223559;
     --sky: #8CA3C9;
     --glass: rgba(20,32,58,0.45);
-    --glass-strong: rgba(24,38,66,0.62);
     --glass-border: rgba(255,255,255,0.14);
     --glass-shadow: rgba(0,0,0,0.45);
     --ring: 0 0 0 1px rgba(255,255,255,0.08) inset;
+    --accent-ink: #7FB3F0;
+    --icon-btn-hover: rgba(127,179,240,0.14);
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background:
-      radial-gradient(1200px 620px at 15% -10%, rgba(46,134,222,0.16), transparent 60%),
-      radial-gradient(900px 500px at 100% 0%, rgba(11,60,137,0.14), transparent 55%),
-      var(--bg);
+    background: var(--bg);
     color: var(--ink);
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
@@ -145,15 +144,26 @@
   a { color: var(--blue-2); text-decoration: none; }
   a:hover { text-decoration: underline; }
   :focus-visible { outline: 2px solid var(--blue-2); outline-offset: 3px; }
+  svg.icon { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; vertical-align: -0.15em; }
 
   @media (prefers-reduced-motion: no-preference) {
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1); }
     .reveal.in { opacity: 1; transform: translateY(0); }
-    .reveal-stagger .reveal:nth-child(1) { transition-delay: 0s; }
-    .reveal-stagger .reveal:nth-child(2) { transition-delay: .06s; }
-    .reveal-stagger .reveal:nth-child(3) { transition-delay: .12s; }
-    .reveal-stagger .reveal:nth-child(4) { transition-delay: .18s; }
   }
+
+  /* ---------- Aurora animated backdrop ---------- */
+  .aurora { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+  .aurora span {
+    position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%;
+    filter: blur(70px); opacity: 0.35; will-change: transform;
+  }
+  .aurora span:nth-child(1) { background: radial-gradient(circle, var(--blue-2), transparent 70%); top: -20%; left: -15%; animation: drift1 26s ease-in-out infinite alternate; }
+  .aurora span:nth-child(2) { background: radial-gradient(circle, var(--navy-2), transparent 70%); top: -10%; right: -20%; animation: drift2 32s ease-in-out infinite alternate; }
+  .aurora span:nth-child(3) { background: radial-gradient(circle, var(--warm), transparent 70%); bottom: -25%; left: 20%; opacity: 0.16; animation: drift3 38s ease-in-out infinite alternate; }
+  @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(6vw, 8vh) scale(1.15); } }
+  @keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-8vw, 6vh) scale(1.1); } }
+  @keyframes drift3 { from { transform: translate(0,0) scale(1); } to { transform: translate(5vw, -6vh) scale(1.2); } }
+  @media (prefers-reduced-motion: reduce) { .aurora span { animation: none !important; } }
 
   /* ---------- Glass primitive ---------- */
   .glass {
@@ -164,9 +174,6 @@
     box-shadow: 0 8px 32px var(--glass-shadow), var(--ring);
     border-radius: 22px;
   }
-  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .glass { background: var(--glass-strong); }
-  }
 
   /* ---------- Floating nav ---------- */
   .navbar {
@@ -176,38 +183,34 @@
     transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
   }
   .navbar.show { transform: translate(-50%, 0); }
-  .navbar a {
-    color: var(--ink); font-size: 0.86rem; font-weight: 600;
-    padding: 8px 14px; border-radius: 999px; white-space: nowrap;
+  .navbar a { color: var(--ink); font-size: 0.86rem; font-weight: 600; padding: 8px 14px; border-radius: 999px; white-space: nowrap; }
+  .navbar a:hover { background: var(--icon-btn-hover); text-decoration: none; }
+  .navbar .brand { font-weight: 800; padding: 8px 6px 8px 12px; color: var(--blue-2); }
+  @media (max-width: 780px) { .navbar .nav-links { display: none; } }
+
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+    background: transparent; border: none; color: var(--ink);
+    font-size: 1.05rem; display: flex; align-items: center; justify-content: center;
   }
-  .navbar a:hover { background: rgba(127,150,190,0.16); text-decoration: none; }
-  .navbar .brand { font-weight: 800; padding-right: 6px; padding-left: 10px; color: var(--blue-2); }
-  .navbar button.theme-toggle {
-    position: static; width: 34px; height: 34px; margin-left: 2px;
-  }
-  @media (max-width: 720px) { .navbar .nav-links { display: none; } }
+  .icon-btn:hover { background: var(--icon-btn-hover); }
 
   /* ---------- Hero ---------- */
-  .hero { position: relative; padding: 128px 24px 120px; text-align: center; overflow: hidden; }
-  .orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.55; pointer-events: none; z-index: 0; }
-  .orb-1 { width: 420px; height: 420px; top: -160px; left: -120px; background: radial-gradient(circle, var(--blue-2), transparent 70%); }
-
+  .hero { position: relative; padding: 128px 24px 40px; text-align: center; }
   .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
   .portrait-wrap {
     width: 168px; height: 168px; margin: 0 auto 26px; border-radius: 50%;
     padding: 5px; background: linear-gradient(140deg, var(--blue-2), var(--navy-2));
     box-shadow: 0 20px 50px rgba(11,60,137,0.35);
   }
-  .portrait-wrap img {
-    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-    border: 3px solid var(--bg);
-    display: block;
-  }
+  .portrait-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--bg); display: block; }
   .hero h1 { font-size: clamp(2.2rem, 5vw, 3.1rem); margin: 0 0 8px; letter-spacing: -0.03em; color: var(--ink); font-weight: 800; }
-  .hero .tagline { font-size: 1.2rem; color: var(--ink-soft); margin: 0 0 8px; font-weight: 500; }
-  .hero .location { color: var(--sky); font-size: 0.92rem; margin-bottom: 30px; }
-  .hero .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 46px; }
+  .hero .tagline { font-size: 1.2rem; color: var(--ink-soft); margin: 0 0 10px; font-weight: 500; }
+  .hero .meta-row { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; color: var(--sky); font-size: 0.92rem; margin-bottom: 30px; }
+  .hero .meta-row span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
   .hero .links a {
+    display: inline-flex; align-items: center; gap: 7px;
     padding: 11px 20px; border-radius: 999px; font-weight: 600; font-size: 0.92rem;
     color: var(--ink); background: var(--glass);
     -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4);
@@ -217,83 +220,111 @@
   .hero .links a:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 0 10px 24px var(--glass-shadow); }
   .hero .links a.primary { background: linear-gradient(140deg, var(--blue-2), var(--navy-2)); color: #fff; border-color: transparent; }
 
+  /* ---------- Track switch ---------- */
+  .track-switch {
+    display: inline-flex; padding: 4px; border-radius: 999px; gap: 2px; margin: 0 auto 56px;
+    position: relative;
+  }
+  .track-switch button {
+    position: relative; z-index: 1; border: none; background: transparent; cursor: pointer;
+    padding: 9px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
+    color: var(--ink-soft); display: inline-flex; align-items: center; gap: 7px;
+    transition: color 0.3s ease;
+  }
+  .track-switch button.active { color: #fff; }
+  .track-switch .thumb {
+    position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px);
+    border-radius: 999px; background: linear-gradient(140deg, var(--blue-2), var(--navy-2));
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), background 0.35s ease;
+  }
+  body.mode-creative .track-switch .thumb { transform: translateX(100%); background: linear-gradient(140deg, var(--warm), var(--warm-ink)); }
+
   /* ---------- Bento overview ---------- */
   .bento {
-    display: grid; gap: 14px; margin: -76px 0 60px; position: relative; z-index: 2;
+    display: grid; gap: 14px; margin-bottom: 60px;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-areas:
-      "story story stat1 stat2"
-      "story story stat3 stat4"
-      "wide  wide  wide  wide";
-  }
-  @media (max-width: 720px) {
-    .bento { grid-template-columns: 1fr 1fr; grid-template-areas: "story story" "stat1 stat2" "stat3 stat4" "wide wide"; margin-top: -40px; }
+    grid-auto-rows: minmax(110px, auto);
+    grid-auto-flow: dense;
   }
   .bento-cell {
     background: var(--card); border: 1px solid var(--border); border-radius: 20px;
-    padding: 26px 28px; box-shadow: 0 1px 3px rgba(10,20,40,0.06);
+    padding: 24px 26px; box-shadow: 0 1px 3px rgba(10,20,40,0.06);
+    display: flex; flex-direction: column; justify-content: center;
   }
-  .bento-story { grid-area: story; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .bento-story { grid-column: span 2; grid-row: span 2; justify-content: center; gap: 16px; }
   .bento-story p { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.65; }
   .bento-story strong { color: var(--ink); }
-  .bento-kicker { font-size: 0.78rem; font-weight: 700; color: var(--blue-2); }
+  .bento-kicker { font-size: 0.78rem; font-weight: 700; color: var(--blue-2); display: inline-flex; align-items: center; gap: 6px; }
   .bento-split { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.82rem; font-weight: 600; }
-  .bento-split .chip-bi, .bento-split .chip-cr {
-    padding: 6px 12px; border-radius: 999px; background: rgba(31,111,178,0.1); color: var(--blue-2);
-  }
-  .bento-split .chip-cr { background: rgba(217,119,87,0.12); color: #C3552B; }
+  .bento-split .chip-bi, .bento-split .chip-cr { padding: 6px 12px; border-radius: 999px; background: rgba(31,111,178,0.1); color: var(--blue-2); }
+  .bento-split .chip-cr { background: rgba(217,119,63,0.14); color: var(--warm-ink); }
   .bento-split .bento-x { color: var(--ink-soft); }
-  .bento-stat { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; grid-column: span 1; }
-  .bento-stat:nth-of-type(2) { grid-area: stat1; }
-  .bento-stat:nth-of-type(3) { grid-area: stat2; }
-  .bento-stat:nth-of-type(4) { grid-area: stat3; }
-  .bento-stat:nth-of-type(5) { grid-area: stat4; }
-  .bento-stat .num { font-size: 1.7rem; font-weight: 800; color: var(--navy-2); letter-spacing: -0.02em; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bento-stat .num { color: #7FB3F0; } }
-  :root[data-theme="dark"] .bento-stat .num { color: #7FB3F0; }
-  .bento-stat .label { font-size: 0.76rem; color: var(--ink-soft); margin-top: 6px; }
-  .bento-wide { grid-area: wide; }
-  .bento-wide .pill-group { margin-top: 12px; }
 
-  /* ---------- Scroll-linked track wash (BI = cool, Creative = warm) ---------- */
-  .track-wash {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background: radial-gradient(900px 700px at 50% 20%, rgba(217,119,87,0.12), transparent 65%);
-    opacity: 0; transition: opacity 0.4s ease;
+  .bento-stat { text-align: center; align-items: center; }
+  .bento-stat .num { font-size: 1.7rem; font-weight: 800; color: var(--accent-ink); letter-spacing: -0.02em; }
+  .bento-stat .label { font-size: 0.76rem; color: var(--ink-soft); margin-top: 6px; }
+
+  .bento-info h3 { margin: 0 0 10px; font-size: 0.95rem; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+  .bento-info .row { display: flex; align-items: baseline; gap: 8px; font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 6px; }
+  .bento-info .row:last-child { margin-bottom: 0; }
+  .bento-info .row strong { color: var(--ink); font-weight: 600; }
+  .bento-edu { grid-column: span 2; }
+  .bento-years { grid-column: span 1; text-align: center; align-items: center; }
+  .bento-years .num { font-size: 2rem; font-weight: 800; color: var(--accent-ink); letter-spacing: -0.02em; }
+  .bento-years .label { font-size: 0.76rem; color: var(--ink-soft); margin-top: 6px; }
+  .bento-intl { grid-column: span 1; }
+  .bento-intl .countries { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .bento-intl .countries span { font-size: 0.78rem; font-weight: 600; color: var(--ink-soft); background: var(--icon-btn-hover); padding: 4px 10px; border-radius: 999px; }
+  .bento-companies { grid-column: span 2; }
+  .bento-companies .pill-group { margin-top: 4px; }
+
+  .bento-wide { grid-column: span 4; overflow: hidden; }
+  @media (max-width: 900px) {
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .bento-story, .bento-edu, .bento-companies, .bento-wide { grid-column: span 2; }
   }
+  @media (max-width: 560px) {
+    .bento { grid-template-columns: 1fr; }
+    .bento-story, .bento-edu, .bento-companies, .bento-wide, .bento-stat, .bento-years, .bento-intl { grid-column: span 1; }
+    .bento-story { grid-row: span 1; }
+  }
+
+  /* ---------- Skills marquee ---------- */
+  .marquee { display: flex; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .marquee-track { display: flex; gap: 10px; flex-shrink: 0; animation: scroll-x 34s linear infinite; padding: 4px 5px; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes scroll-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
   /* ---------- Layout ---------- */
-  .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px 100px; position: relative; z-index: 1; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 20px 100px; position: relative; z-index: 1; }
   section.section { padding: 8px 0 56px; }
   section.section h2 {
     font-size: 1.5rem; margin: 0 0 28px; color: var(--ink); font-weight: 800; letter-spacing: -0.01em;
     display: flex; align-items: center; gap: 10px;
   }
-  section.section h2 .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--blue-2); display: inline-block; box-shadow: 0 0 0 5px rgba(46,134,222,0.15); }
+  section.section h2 svg.icon { width: 1.15em; height: 1.15em; color: var(--blue-2); }
   .lead { font-size: 1.06rem; color: var(--ink-soft); }
   .lead strong { color: var(--ink); }
   .card-pad { padding: 30px 32px; }
 
+  /* ---------- Track sections (togglable order) ---------- */
+  .track-sections { display: flex; flex-direction: column; }
+  body.mode-creative #experience-bi { order: 2; }
+  body.mode-creative #experience-creative { order: 1; }
+
   /* ---------- Timeline ---------- */
-  .timeline { position: relative; padding-left: 32px; }
-  .timeline::before {
-    content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px;
-    background: linear-gradient(var(--blue-2), var(--border) 90%);
-    opacity: 0.5;
-  }
+  .timeline { position: relative; padding-left: 34px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--blue-2), var(--border) 90%); opacity: 0.5; }
+  #experience-creative .timeline::before { background: linear-gradient(var(--warm), var(--border) 90%); }
   .t-item { position: relative; margin-bottom: 26px; }
   .t-item:last-child { margin-bottom: 0; }
-  .t-dot {
-    position: absolute; left: -32px; top: 22px; width: 16px; height: 16px; border-radius: 50%;
-    background: var(--bg); border: 3px solid var(--blue-2); z-index: 1;
-  }
-  .t-dot.alt { border-color: var(--navy-2); }
+  .t-dot { position: absolute; left: -34px; top: 22px; width: 30px; height: 30px; border-radius: 50%; background: var(--card); border: 2px solid var(--blue-2); z-index: 1; display: flex; align-items: center; justify-content: center; color: var(--blue-2); }
+  #experience-creative .t-dot { border-color: var(--warm); color: var(--warm-ink); }
+  .t-dot svg.icon { width: 15px; height: 15px; }
   .t-card { padding: 20px 24px; }
-  .t-card .track-label {
-    display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em;
-    color: var(--blue); background: rgba(31,111,178,0.1);
-    padding: 3px 11px; border-radius: 999px; margin-bottom: 8px;
-  }
+  .t-card .track-label { display: inline-block; font-size: 0.72rem; font-weight: 700; color: var(--blue); background: rgba(31,111,178,0.1); padding: 3px 11px; border-radius: 999px; margin-bottom: 8px; }
+  #experience-creative .track-label { color: var(--warm-ink); background: rgba(217,119,63,0.12); }
   .t-card h3 { margin: 0 0 2px; font-size: 1.05rem; color: var(--ink); }
   .t-card .meta { color: var(--ink-soft); font-size: 0.87rem; margin-bottom: 10px; }
   .t-card ul { margin: 8px 0 0; padding-left: 18px; }
@@ -304,80 +335,92 @@
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
 
-  .pill-group { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 8px; }
-  .pill {
-    background: var(--glass); color: var(--blue-2);
-    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    padding: 7px 14px; border-radius: 999px; font-size: 0.83rem; font-weight: 600;
-  }
+  .pill-group { display: flex; flex-wrap: wrap; gap: 9px; }
+  .pill { background: var(--glass); color: var(--blue-2); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); padding: 7px 14px; border-radius: 999px; font-size: 0.83rem; font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
 
   .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 640px) { .projects { grid-template-columns: 1fr; } }
-  .project {
-    padding: 20px 22px; display: flex; flex-direction: column; gap: 8px;
-    transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease;
-  }
+  .project { padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease; }
   .project:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--glass-shadow); }
-  .project a.name { font-weight: 700; font-size: 0.98rem; }
+  .project a.name { font-weight: 700; font-size: 0.98rem; display: flex; align-items: center; gap: 7px; }
   .project .desc { color: var(--ink-soft); font-size: 0.9rem; }
 
-  footer {
-    text-align: center; padding: 44px 20px 60px; color: var(--ink-soft); font-size: 0.88rem; position: relative; z-index: 1;
-  }
+  footer { text-align: center; padding: 44px 20px 60px; color: var(--ink-soft); font-size: 0.88rem; position: relative; z-index: 1; }
   footer a { color: var(--blue-2); font-weight: 600; }
-
-  .theme-toggle {
-    width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
-    background: transparent; border: none; color: var(--ink);
-    font-size: 1.05rem; display: flex; align-items: center; justify-content: center;
-  }
+  footer .foot-links { display: flex; justify-content: center; gap: 16px; margin-top: 8px; }
+  footer .foot-links a { display: inline-flex; align-items: center; gap: 6px; }
 
   @media print {
-    .navbar, .orb, .hero .links, footer .glass { display: none; }
+    .navbar, .aurora, .hero .links, .track-switch { display: none; }
     body { background: #fff; }
     .hero { padding: 12px 0; }
-    .glass { background: #fff; box-shadow: none; border: 1px solid #ddd; }
+    .glass, .bento-cell { background: #fff; box-shadow: none; border: 1px solid #ddd; -webkit-backdrop-filter: none; backdrop-filter: none; }
   }
 </style>
 </head>
 <body>
 
+<!-- Icon sprite (Lucide-style minimal line icons, no emoji anywhere on this site) -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c2.5 2.7 4 6.2 4 10s-1.5 7.3-4 10c-2.5-2.7-4-6.2-4-10s1.5-7.3 4-10Z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="2" y="9" width="4" height="12" rx="0.5"/><circle cx="4" cy="4" r="2"/><path d="M8.5 9.5H12v2.1c.7-1.4 2-2.4 4-2.4 3.6 0 4.5 2.4 4.5 5.5V21h-4v-5.6c0-1.2-.4-2.4-1.8-2.4-1.5 0-2.2 1-2.2 2.4V21h-4Z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.1 2.7 3 6 3s6-1.9 6-3v-4.5"/><path d="M22 10v6"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M2 13h20"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8Z"/><path d="M19 15l.7 1.8L21.5 17.5l-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7Z"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 7h1M8 11h1M15 7h1M15 11h1M12 7h.01M12 11h.01"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .87-.5l.9-1.5A1 1 0 0 1 9.8 3.5h4.4a1 1 0 0 1 .87.5l.9 1.5a1 1 0 0 0 .87.5H18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  <symbol id="i-bar-chart" viewBox="0 0 24 24"><path d="M3 21V9M9 21V3M15 21v-7M21 21V6"/></symbol>
+  <symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></symbol>
+</svg>
+
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
 <nav class="navbar glass" id="navbar">
   <span class="brand">LD</span>
   <span class="nav-links">
-    <a href="#about">About</a>
-    <a href="#experience-bi">BI &amp; Data</a>
-    <a href="#experience-creative">Creative</a>
+    <a href="#overview">Overview</a>
+    <a href="#experience-bi">Experience</a>
     <a href="#education">Education</a>
     <a href="#projects">Projects</a>
   </span>
-  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch color theme" title="Switch color theme">🌙</button>
+  <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch color theme" title="Switch color theme"><svg class="icon" id="themeIcon"><use href="#i-moon"/></svg></button>
 </nav>
 
-<div class="track-wash" id="trackWash"></div>
-
 <div class="hero">
-  <div class="orb orb-1"></div>
   <div class="hero-inner">
     <div class="portrait-wrap"><img src="assets/portrait.jpg" alt="Portrait of Ludovic Delot" width="168" height="168"></div>
     <h1>Ludovic Delot</h1>
     <p class="tagline">Reads the numbers. Shoots the moment.</p>
-    <p class="location">📍 Mexico City, Mexico · 🇲🇽 🇫🇷 Dual national</p>
+    <p class="meta-row">
+      <span><svg class="icon"><use href="#i-pin"/></svg> Mexico City, Mexico</span>
+      <span><svg class="icon"><use href="#i-globe"/></svg> Mexican &amp; French national</span>
+    </p>
     <div class="links">
-      <a class="primary" href="https://www.linkedin.com/in/delot/">LinkedIn</a>
-      <a href="https://github.com/ludodelot">GitHub</a>
-      <a href="mailto:contactoludovicdelot@gmail.com">Email</a>
-      <a href="#" id="pdfBtn">Download CV (PDF)</a>
+      <a class="primary" href="https://www.linkedin.com/in/delot/"><svg class="icon"><use href="#i-linkedin"/></svg> LinkedIn</a>
+      <a href="https://github.com/ludodelot"><svg class="icon"><use href="#i-github"/></svg> GitHub</a>
+      <a href="mailto:contactoludovicdelot@gmail.com"><svg class="icon"><use href="#i-mail"/></svg> Email</a>
+      <a href="#" id="pdfBtn"><svg class="icon"><use href="#i-download"/></svg> Download CV</a>
+    </div>
+
+    <div class="track-switch glass" role="group" aria-label="Highlight track">
+      <div class="thumb" aria-hidden="true"></div>
+      <button type="button" id="btnBI" class="active" aria-pressed="true"><svg class="icon"><use href="#i-bar-chart"/></svg> Data &amp; BI</button>
+      <button type="button" id="btnCreative" aria-pressed="false"><svg class="icon"><use href="#i-camera"/></svg> Creative &amp; Marketing</button>
     </div>
   </div>
 </div>
 
 <div class="wrap">
 
-  <section class="bento reveal-stagger" id="overview" aria-label="Overview">
+  <section class="bento" id="overview" aria-label="Overview">
     <div class="bento-cell bento-story reveal">
-      <span class="bento-kicker">Two ways of seeing</span>
+      <span class="bento-kicker"><svg class="icon"><use href="#i-sparkle"/></svg> Two ways of seeing</span>
       <p>By day, <strong>Ludovic turns 25,000+ SKU–store rows into a single Power BI number</strong> a Marketing lead can act on. By night, he's in the pit at Vive Latino <strong>turning one frame into the shot a festival remembers.</strong> Same instinct — find the signal, frame it so someone else can see it instantly — pointed at two different canvases.</p>
       <div class="bento-split" aria-hidden="true">
         <span class="chip-bi">Business Intelligence</span>
@@ -385,22 +428,52 @@
         <span class="chip-cr">Festival Photography</span>
       </div>
     </div>
+
     <div class="bento-cell bento-stat reveal"><div class="num">20+</div><div class="label">Power BI dashboards shipped</div></div>
     <div class="bento-cell bento-stat reveal"><div class="num">25k+</div><div class="label">SKU–store combos forecasted</div></div>
+
+    <div class="bento-cell bento-info bento-edu reveal">
+      <h3><svg class="icon"><use href="#i-cap"/></svg> Education</h3>
+      <div class="row"><strong>MSc,</strong> International Management &amp; Finance — Rennes School of Business (Triple Crown: AACSB · EQUIS · AMBA)</div>
+      <div class="row"><strong>BSc,</strong> Business Intelligence + <strong>Minor, Artificial Intelligence with Business Impact</strong> — Tecnológico de Monterrey, 97/100</div>
+    </div>
+
     <div class="bento-cell bento-stat reveal"><div class="num">160+</div><div class="label">Delot Media clients</div></div>
-    <div class="bento-cell bento-stat reveal"><div class="num">2</div><div class="label">Degrees · MX + FR</div></div>
-    <div class="bento-cell bento-wide reveal">
-      <span class="bento-kicker">Stack</span>
+
+    <div class="bento-cell bento-years reveal">
+      <div class="num">4+</div>
+      <div class="label">Years of professional experience<br>(since Aug 2022)</div>
+    </div>
+
+    <div class="bento-cell bento-info bento-intl reveal">
+      <h3><svg class="icon"><use href="#i-globe"/></svg> International Experience</h3>
+      <div class="row"><strong>Global BI/Data Products</strong></div>
+      <div class="countries">
+        <span><svg class="icon"><use href="#i-pin"/></svg> Mexico</span>
+        <span><svg class="icon"><use href="#i-pin"/></svg> France</span>
+        <span><svg class="icon"><use href="#i-pin"/></svg> Spain</span>
+        <span><svg class="icon"><use href="#i-pin"/></svg> Belgium</span>
+      </div>
+    </div>
+
+    <div class="bento-cell bento-info bento-companies reveal">
+      <h3><svg class="icon"><use href="#i-building"/></svg> Companies</h3>
       <div class="pill-group">
-        <span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">SQL</span>
-        <span class="pill">Python</span><span class="pill">R</span><span class="pill">Adobe Premiere</span>
-        <span class="pill">Lightroom</span><span class="pill">Figma</span>
+        <span class="pill">LVMH</span><span class="pill">Groupe SEB</span><span class="pill">El Puerto de Liverpool</span>
+        <span class="pill">Live Nation / OCESA</span><span class="pill">Tomorrowland</span><span class="pill">Tec de Monterrey (EGADE)</span>
+      </div>
+    </div>
+
+    <div class="bento-cell bento-wide reveal">
+      <span class="bento-kicker"><svg class="icon"><use href="#i-bar-chart"/></svg> Stack</span>
+      <div class="marquee">
+        <div class="marquee-track" id="skillsTrack"></div>
       </div>
     </div>
   </section>
 
   <section class="section reveal" id="about">
-    <h2><span class="dot"></span>About</h2>
+    <h2><svg class="icon"><use href="#i-dot"/></svg>About</h2>
     <div class="glass card-pad">
       <p class="lead">
         <strong>Ludovic Delot</strong> is a Business Intelligence &amp; Data Analyst currently working as
@@ -420,20 +493,22 @@
       </p>
       <p class="lead">
         He holds an <strong>MSc in International Management &amp; Finance</strong> from
-        <a href="https://www.linkedin.com/school/renneschoolofbusiness/">Rennes School of Business</a> (Triple Crown
-        accredited: AACSB, EQUIS, AMBA) and a <strong>BSc in Business Intelligence</strong> from
+        <a href="https://www.linkedin.com/school/renneschoolofbusiness/">Rennes School of Business</a> and a
+        <strong>BSc in Business Intelligence with a Minor in Artificial Intelligence</strong> from
         <a href="https://www.linkedin.com/school/tecdemonterrey/">Tecnológico de Monterrey</a>. Based in Mexico City,
         with dual Mexican/French nationality.
       </p>
     </div>
   </section>
 
+  <div class="track-sections">
+
   <section class="section reveal" id="experience-bi">
-    <h2><span class="dot"></span>Business Intelligence &amp; Data — Experience</h2>
+    <h2><svg class="icon"><use href="#i-bar-chart"/></svg>Business Intelligence &amp; Data — Experience</h2>
     <div class="timeline">
 
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
           <span class="track-label">LVMH · Luxury / Beauty</span>
           <h3>Data &amp; Business Intelligence (Power BI) Intern</h3>
@@ -449,7 +524,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
           <h3>Commercial Business Analyst Trainee (Remote)</h3>
           <div class="meta">France, managing Mexico's BI operation · Aug 2025 – Jun 2026</div>
@@ -463,7 +538,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
           <h3>Commercial Business Analyst Trainee</h3>
           <div class="meta">Mexico City · Feb 2025 – Aug 2025</div>
@@ -475,7 +550,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot alt"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
           <span class="track-label">El Puerto de Liverpool · Retail</span>
           <h3>Automation Business Analyst</h3>
@@ -489,7 +564,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot alt"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
           <span class="track-label">Groupe SEB · Consumer Goods, €8B+ sales</span>
           <h3>National CPFR Supply Chain Data Analyst</h3>
@@ -503,7 +578,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
           <span class="track-label">EGADE Business School (Tec de Monterrey)</span>
           <h3>Data Analyst Intern</h3>
@@ -520,11 +595,11 @@
   </section>
 
   <section class="section reveal" id="experience-creative">
-    <h2><span class="dot"></span>Content, Marketing &amp; Photography — Experience</h2>
+    <h2><svg class="icon"><use href="#i-camera"/></svg>Content, Marketing &amp; Photography — Experience</h2>
     <div class="timeline">
 
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
           <h3>Founder — Delot Media</h3>
           <div class="meta">Mexico City · Aug 2019 – present</div>
@@ -537,7 +612,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot alt"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
           <span class="track-label">Live Nation Entertainment / OCESA</span>
           <h3>Digital Marketing &amp; Content Photographer, Core Team</h3>
@@ -550,7 +625,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
           <h3>Press &amp; Media Partner Photographer/Videographer</h3>
           <div class="meta">Concert &amp; Festival Business Unit · Feb 2023 – Mar 2024</div>
@@ -559,7 +634,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
           <h3>Freelance Content Manager — EDC México</h3>
           <div class="meta">Artist labels/management (not OCESA) · Feb 2024, Feb 2025</div>
@@ -569,7 +644,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot alt"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
           <span class="track-label">Tomorrowland — Lab of Tomorrow</span>
           <h3>Content Marketing Producer</h3>
@@ -584,7 +659,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
           <span class="track-label">Piso 40 · Restaurant / Hospitality</span>
           <h3>Content Marketing Specialist</h3>
@@ -594,7 +669,7 @@
       </div>
 
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
           <span class="track-label"><a href="https://www.linkedin.com/company/coparmexnacional" style="color:inherit">Coparmex</a></span>
           <h3>Marketing &amp; Communications Coordinator</h3>
@@ -606,8 +681,10 @@
     </div>
   </section>
 
+  </div>
+
   <section class="section reveal" id="entrepreneurship">
-    <h2><span class="dot"></span>Entrepreneurship</h2>
+    <h2><svg class="icon"><use href="#i-sparkle"/></svg>Entrepreneurship</h2>
     <div class="t-card glass">
       <h3>Co-Founder — Projectype</h3>
       <div class="meta">Mexico City · Dec 2024 – Jun 2026</div>
@@ -621,7 +698,7 @@
   </section>
 
   <section class="section reveal" id="education">
-    <h2><span class="dot"></span>Education &amp; Leadership</h2>
+    <h2><svg class="icon"><use href="#i-cap"/></svg>Education &amp; Leadership</h2>
     <div class="grid-2" style="margin-bottom:20px;">
       <div class="glass card-pad">
         <h3 style="margin-top:0;">MSc, International Management &amp; Finance</h3>
@@ -629,14 +706,14 @@
         <p style="color:var(--ink-soft);font-size:0.93rem;margin:0;">Triple Crown accredited (AACSB · EQUIS · AMBA), Top 100 globally for MSc programs (FT, QS). Quantitative finance, econometrics, data science, Python-based forecasting, portfolio optimization and risk simulation.</p>
       </div>
       <div class="glass card-pad">
-        <h3 style="margin-top:0;">BSc, Business Intelligence</h3>
+        <h3 style="margin-top:0;">BSc, Business Intelligence — Minor, Artificial Intelligence with Business Impact</h3>
         <div class="meta" style="color:var(--ink-soft);font-size:0.87rem;margin-bottom:8px;"><a href="https://www.linkedin.com/school/tecdemonterrey/">Tecnológico de Monterrey</a> · Mexico City</div>
-        <p style="color:var(--ink-soft);font-size:0.93rem;margin:0;">97/100 (ITESM scale), 3.8/4.0 GPA. Tableau/Power BI dashboarding, Python &amp; R. Real corporate projects with OXXO, Patagonia, Banorte, Volaris, Jumex, L'Oréal, Mazda.</p>
+        <p style="color:var(--ink-soft);font-size:0.93rem;margin:0;">97/100 (ITESM scale), 3.8/4.0 GPA. Minor covers supervised/unsupervised ML, deep neural networks, multivariate statistics and a capstone consulting project on custom AI models for business strategy. Real corporate projects with OXXO, Patagonia, Banorte, Volaris, Jumex, L'Oréal, Mazda.</p>
       </div>
     </div>
     <div class="timeline">
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-cap"/></svg></div>
         <div class="t-card glass">
           <h3>President, Business Intelligence</h3>
           <div class="meta">Student Participation Committee, Tecnológico de Monterrey · May 2024 – Jun 2025</div>
@@ -644,7 +721,7 @@
         </div>
       </div>
       <div class="t-item">
-        <div class="t-dot"></div>
+        <div class="t-dot"><svg class="icon"><use href="#i-cap"/></svg></div>
         <div class="t-card glass">
           <h3>Marketing Communications Intern ("Storyteller")</h3>
           <div class="meta">Story Tellers Program, Tecnológico de Monterrey · Aug 2022 – Jul 2024 (2 years)</div>
@@ -655,9 +732,9 @@
   </section>
 
   <section class="section reveal" id="skills">
-    <h2><span class="dot"></span>Skills &amp; Stack</h2>
+    <h2><svg class="icon"><use href="#i-sparkle"/></svg>Skills &amp; Stack</h2>
     <div class="glass card-pad">
-      <div class="pill-group">
+      <div class="pill-group" id="skillsFull">
         <span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">SQL</span>
         <span class="pill">Python</span><span class="pill">R</span><span class="pill">Tableau</span>
         <span class="pill">Excel</span><span class="pill">UiPath / RPA</span><span class="pill">Notion</span>
@@ -677,22 +754,22 @@
   </section>
 
   <section class="section reveal" id="projects">
-    <h2><span class="dot"></span>Featured Projects</h2>
+    <h2><svg class="icon"><use href="#i-bar-chart"/></svg>Featured Projects</h2>
     <div class="projects">
       <div class="project glass">
-        <a class="name" href="https://github.com/ludodelot/rsb-datascience-finance-clustering-portfolios">rsb-datascience-finance-clustering-portfolios</a>
+        <a class="name" href="https://github.com/ludodelot/rsb-datascience-finance-clustering-portfolios"><svg class="icon"><use href="#i-github"/></svg> rsb-datascience-finance-clustering-portfolios</a>
         <span class="desc">K-Means &amp; hierarchical clustering across 105 US stocks to build portfolios</span>
       </div>
       <div class="project glass">
-        <a class="name" href="https://github.com/ludodelot/rsb-financial-econometrics-semiconductors">rsb-financial-econometrics-semiconductors</a>
+        <a class="name" href="https://github.com/ludodelot/rsb-financial-econometrics-semiconductors"><svg class="icon"><use href="#i-github"/></svg> rsb-financial-econometrics-semiconductors</a>
         <span class="desc">PCA, robust OLS, CSAD herding test &amp; EGARCH on the semiconductor supply chain</span>
       </div>
       <div class="project glass">
-        <a class="name" href="https://github.com/ludodelot/rsb-exchange-markets-ppp-mexico-france">rsb-exchange-markets-ppp-mexico-france</a>
+        <a class="name" href="https://github.com/ludodelot/rsb-exchange-markets-ppp-mexico-france"><svg class="icon"><use href="#i-github"/></svg> rsb-exchange-markets-ppp-mexico-france</a>
         <span class="desc">Testing Purchasing Power Parity between Mexico and France, 2020–2024</span>
       </div>
       <div class="project glass">
-        <a class="name" href="https://github.com/ludodelot/rsb-financial-toolbox-easyvelo">rsb-financial-toolbox-easyvelo</a>
+        <a class="name" href="https://github.com/ludodelot/rsb-financial-toolbox-easyvelo"><svg class="icon"><use href="#i-github"/></svg> rsb-financial-toolbox-easyvelo</a>
         <span class="desc">Financial model (P&amp;L, WACC, break-even) for a bike-subscription business plan</span>
       </div>
     </div>
@@ -702,66 +779,45 @@
 
 <footer>
   <p>Ludovic Delot · Mexico City · <a href="mailto:contactoludovicdelot@gmail.com">contactoludovicdelot@gmail.com</a></p>
-  <p><a href="https://www.linkedin.com/in/delot/">LinkedIn</a> · <a href="https://github.com/ludodelot">GitHub</a></p>
+  <p class="foot-links">
+    <a href="https://www.linkedin.com/in/delot/"><svg class="icon"><use href="#i-linkedin"/></svg> LinkedIn</a>
+    <a href="https://github.com/ludodelot"><svg class="icon"><use href="#i-github"/></svg> GitHub</a>
+  </p>
 </footer>
 
 <script>
+  // Theme toggle
   (function () {
     var root = document.documentElement;
     var toggle = document.getElementById('themeToggle');
+    var themeIcon = document.getElementById('themeIcon');
     var stored = localStorage.getItem('theme');
     var mql = window.matchMedia('(prefers-color-scheme: dark)');
 
     function applied() { return stored || (mql.matches ? 'dark' : 'light'); }
-    function paintButton() {
-      var isDark = applied() === 'dark';
-      toggle.textContent = isDark ? '☀️' : '🌙';
-      toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    }
+    function paint() { themeIcon.innerHTML = '<use href="#' + (applied() === 'dark' ? 'i-sun' : 'i-moon') + '"/>'; }
     if (stored) root.setAttribute('data-theme', stored);
-    paintButton();
-
+    paint();
     toggle.addEventListener('click', function () {
-      var next = applied() === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      stored = next;
-      paintButton();
+      stored = applied() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', stored);
+      localStorage.setItem('theme', stored);
+      paint();
     });
   })();
 
-  document.getElementById('pdfBtn').addEventListener('click', function (e) {
-    e.preventDefault();
-    window.print();
-  });
+  // PDF export
+  document.getElementById('pdfBtn').addEventListener('click', function (e) { e.preventDefault(); window.print(); });
 
-  (function () {
-    var wash = document.getElementById('trackWash');
-    var creative = document.getElementById('experience-creative');
-    if (!wash || !creative) return;
-    var onScroll = function () {
-      var r = creative.getBoundingClientRect();
-      var vh = window.innerHeight;
-      // Ramp opacity in as the creative section's top approaches/enters the viewport.
-      var progress = (vh - r.top) / vh;
-      progress = Math.max(0, Math.min(1, progress));
-      wash.style.opacity = (progress * 0.9).toFixed(2);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    onScroll();
-  })();
-
+  // Floating nav on scroll
   (function () {
     var nav = document.getElementById('navbar');
-    var onScroll = function () {
-      if (window.scrollY > 260) nav.classList.add('show');
-      else nav.classList.remove('show');
-    };
+    var onScroll = function () { nav.classList.toggle('show', window.scrollY > 260); };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   })();
 
+  // Reveal on scroll
   (function () {
     if (!('IntersectionObserver' in window)) {
       document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
@@ -769,13 +825,36 @@
     }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+
+  // Data & BI <-> Creative & Marketing track switch
+  (function () {
+    var body = document.body;
+    var btnBI = document.getElementById('btnBI');
+    var btnCreative = document.getElementById('btnCreative');
+    function setMode(mode) {
+      body.classList.toggle('mode-creative', mode === 'creative');
+      btnBI.classList.toggle('active', mode !== 'creative');
+      btnCreative.classList.toggle('active', mode === 'creative');
+      btnBI.setAttribute('aria-pressed', mode !== 'creative');
+      btnCreative.setAttribute('aria-pressed', mode === 'creative');
+      localStorage.setItem('trackMode', mode);
+    }
+    btnBI.addEventListener('click', function () { setMode('bi'); });
+    btnCreative.addEventListener('click', function () { setMode('creative'); });
+    setMode(localStorage.getItem('trackMode') || 'bi');
+  })();
+
+  // Skills marquee (duplicated once for seamless loop)
+  (function () {
+    var skills = ['Power BI','DAX','SQL','Python','R','Tableau','Excel','UiPath / RPA','Notion','OpenAI API','Anthropic Claude','AWS','Google Cloud','Adobe Premiere Pro','Photoshop / Lightroom','Figma','Git / GitHub'];
+    var track = document.getElementById('skillsTrack');
+    var html = skills.map(function (s) { return '<span class="pill">' + s + '</span>'; }).join('');
+    track.innerHTML = html + html;
   })();
 </script>
 
