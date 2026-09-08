@@ -145,6 +145,7 @@
   a:hover { text-decoration: underline; }
   :focus-visible { outline: 2px solid var(--blue-2); outline-offset: 3px; }
   svg.icon { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; vertical-align: -0.15em; }
+  svg.icon.flag { width: 1.3em; height: auto; aspect-ratio: 24/16; stroke: none; border-radius: 3px; box-shadow: 0 0 0 1px var(--border); }
 
   @media (prefers-reduced-motion: no-preference) {
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1); }
@@ -338,6 +339,11 @@
   .pill-group { display: flex; flex-wrap: wrap; gap: 9px; }
   .pill { background: var(--glass); color: var(--blue-2); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); padding: 7px 14px; border-radius: 999px; font-size: 0.83rem; font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
 
+  .photo-strip { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; }
+  .photo-card { margin: 0; flex: 0 0 min(340px, 80vw); border-radius: 20px; overflow: hidden; padding: 0; scroll-snap-align: start; }
+  .photo-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+  .photo-card figcaption { padding: 12px 16px; font-size: 0.85rem; color: var(--ink-soft); font-weight: 600; }
+
   .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 640px) { .projects { grid-template-columns: 1fr; } }
   .project { padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease; }
@@ -377,6 +383,10 @@
   <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .87-.5l.9-1.5A1 1 0 0 1 9.8 3.5h4.4a1 1 0 0 1 .87.5l.9 1.5a1 1 0 0 0 .87.5H18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="3.5"/></symbol>
   <symbol id="i-bar-chart" viewBox="0 0 24 24"><path d="M3 21V9M9 21V3M15 21v-7M21 21V6"/></symbol>
   <symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></symbol>
+  <symbol id="flag-mx" viewBox="0 0 24 16"><rect width="24" height="16" rx="3" fill="#0B3C89" stroke="none"/><rect width="8" height="16" fill="#0F7A3D" stroke="none"/><rect x="16" width="8" height="16" fill="#CE1126" stroke="none"/><rect x="8" width="8" height="16" fill="#F4F1EA" stroke="none"/><circle cx="12" cy="8" r="2" fill="#0B3C89" stroke="none"/></symbol>
+  <symbol id="flag-fr" viewBox="0 0 24 16"><rect width="24" height="16" rx="3" fill="#fff" stroke="none"/><rect width="8" height="16" fill="#0055A4" stroke="none"/><rect x="16" width="8" height="16" fill="#EF4135" stroke="none"/></symbol>
+  <symbol id="flag-es" viewBox="0 0 24 16"><rect width="24" height="16" rx="3" fill="#AA151B" stroke="none"/><rect y="4" width="24" height="8" fill="#F1BF00" stroke="none"/></symbol>
+  <symbol id="flag-be" viewBox="0 0 24 16"><rect width="24" height="16" rx="3" fill="#FDDA24" stroke="none"/><rect width="8" height="16" fill="#000" stroke="none"/><rect x="16" width="8" height="16" fill="#EF3340" stroke="none"/></symbol>
 </svg>
 
 <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -399,7 +409,6 @@
     <p class="tagline">Reads the numbers. Shoots the moment.</p>
     <p class="meta-row">
       <span><svg class="icon"><use href="#i-pin"/></svg> Mexico City, Mexico</span>
-      <span><svg class="icon"><use href="#i-globe"/></svg> Mexican &amp; French national</span>
     </p>
     <div class="links">
       <a class="primary" href="https://www.linkedin.com/in/delot/"><svg class="icon"><use href="#i-linkedin"/></svg> LinkedIn</a>
@@ -429,9 +438,6 @@
       </div>
     </div>
 
-    <div class="bento-cell bento-stat reveal"><div class="num">20+</div><div class="label">Power BI dashboards shipped</div></div>
-    <div class="bento-cell bento-stat reveal"><div class="num">25k+</div><div class="label">SKU–store combos forecasted</div></div>
-
     <div class="bento-cell bento-info bento-edu reveal">
       <h3><svg class="icon"><use href="#i-cap"/></svg> Education</h3>
       <div class="row"><strong>MSc,</strong> International Management &amp; Finance — Rennes School of Business (Triple Crown: AACSB · EQUIS · AMBA)</div>
@@ -441,18 +447,18 @@
     <div class="bento-cell bento-stat reveal"><div class="num">160+</div><div class="label">Delot Media clients</div></div>
 
     <div class="bento-cell bento-years reveal">
-      <div class="num">4+</div>
-      <div class="label">Years of professional experience<br>(since Aug 2022)</div>
+      <div class="num">4.1</div>
+      <div class="label">Years of professional experience</div>
     </div>
 
     <div class="bento-cell bento-info bento-intl reveal">
       <h3><svg class="icon"><use href="#i-globe"/></svg> International Experience</h3>
       <div class="row"><strong>Global BI/Data Products</strong></div>
       <div class="countries">
-        <span><svg class="icon"><use href="#i-pin"/></svg> Mexico</span>
-        <span><svg class="icon"><use href="#i-pin"/></svg> France</span>
-        <span><svg class="icon"><use href="#i-pin"/></svg> Spain</span>
-        <span><svg class="icon"><use href="#i-pin"/></svg> Belgium</span>
+        <span><svg class="icon flag"><use href="#flag-mx"/></svg> Mexico</span>
+        <span><svg class="icon flag"><use href="#flag-fr"/></svg> France</span>
+        <span><svg class="icon flag"><use href="#flag-es"/></svg> Spain</span>
+        <span><svg class="icon flag"><use href="#flag-be"/></svg> Belgium</span>
       </div>
     </div>
 
@@ -495,9 +501,26 @@
         He holds an <strong>MSc in International Management &amp; Finance</strong> from
         <a href="https://www.linkedin.com/school/renneschoolofbusiness/">Rennes School of Business</a> and a
         <strong>BSc in Business Intelligence with a Minor in Artificial Intelligence</strong> from
-        <a href="https://www.linkedin.com/school/tecdemonterrey/">Tecnológico de Monterrey</a>. Based in Mexico City,
-        with dual Mexican/French nationality.
+        <a href="https://www.linkedin.com/school/tecdemonterrey/">Tecnológico de Monterrey</a>.
       </p>
+      <p class="lead" style="display:flex;align-items:center;gap:8px;">
+        <svg class="icon flag"><use href="#flag-mx"/></svg><svg class="icon flag"><use href="#flag-fr"/></svg>
+        Based in Mexico City, with dual Mexican &amp; French nationality.
+      </p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="highlights" aria-label="In the field">
+    <h2><svg class="icon"><use href="#i-camera"/></svg>In the Field</h2>
+    <div class="photo-strip">
+      <figure class="photo-card glass">
+        <img src="assets/hackathon-google.jpg" alt="Ludovic Delot's team celebrating a hackathon win at Google Mexico" loading="lazy">
+        <figcaption>Google Mexico — hackathon win with the team</figcaption>
+      </figure>
+      <figure class="photo-card glass">
+        <img src="assets/hackathon-google.jpg" alt="Ludovic Delot's team celebrating a hackathon win at Google Mexico" loading="lazy">
+        <figcaption>Google Mexico — hackathon win with the team</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -605,9 +628,24 @@
           <div class="meta">Mexico City · Aug 2019 – present</div>
           <ul>
             <li><strong>160+ clients served</strong>, including brands with a combined 350,000+ followers across Instagram and Facebook.</li>
-            <li>Photography, video production, social media strategy and analytics for 10+ simultaneous clients.</li>
+            <li>Photography, video production, social media strategy and analytics for <strong>10+ simultaneous clients</strong>.</li>
+            <li>Production and management of portrait, product and fashion photo shoots, plus editorial video edits delivered on Adobe Premiere.</li>
+            <li>On-location media coverage at large-scale venues, including <strong>Autódromo Hermanos Rodríguez</strong> and the <strong>Auditorio Nacional's Lunario</strong>.</li>
           </ul>
           <div class="skills">Adobe Photoshop · Lightroom · Premiere</div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
+        <div class="t-card glass">
+          <span class="track-label">Polymath 360 · Freemium Studios</span>
+          <h3>Marketing Assistant — Cosmos México</h3>
+          <div class="meta">Mexico City · Dec 2024</div>
+          <ul>
+            <li>Shot professional-grade photography at <strong>Cosmos México</strong>, one of Latin America's largest science &amp; technology events.</li>
+            <li>Produced content for speakers with a combined <strong>30M+ social following</strong> — Farid Dieck (22M TikTok), Javier Santaolalla (4.2M YouTube), José Luis Crespo (3.7M YouTube).</li>
+          </ul>
         </div>
       </div>
 
@@ -619,7 +657,8 @@
           <div class="meta">Festival Business Unit · Mexico City · Mar 2024 – Mar 2025</div>
           <ul>
             <li>Official festival photography for <strong>Vive Latino 2024</strong> — 12+ headline artists, incl. Kings of Leon, Billy Idol, Rüfüs Du Sol.</li>
-            <li><strong>Top-performing photographer, day 2 of Festival Arre 2024</strong> — highest post volume on the official account.</li>
+            <li><strong>Top-performing photographer, day 2 of Festival Arre 2024</strong> — highest post volume on the official account, 9+ headline artists incl. Belinda and Junior H.</li>
+            <li>Extended festival coverage as press/media partner across <strong>Zamna, Vaivén and Afterlife Mexico City</strong> — artists incl. Adriatique, Camelphat, Anyma.</li>
           </ul>
         </div>
       </div>
@@ -691,6 +730,7 @@
       <ul>
         <li><strong>Finance Lead</strong> — budgeting, forecasting, profitability analysis, executive reporting.</li>
         <li><strong>Technology Ops Lead</strong> — automated workflows with Notion, Make and Power BI.</li>
+        <li><strong>Digital Marketing Specialist</strong> — built the LinkedIn &amp; Facebook content strategy from scratch: <strong>+10% follower growth month-over-month</strong> and <strong>10,000+ monthly visits</strong> across channels.</li>
         <li><strong>Board Member &amp; Co-Founder</strong> — corporate governance and strategic decisions.</li>
       </ul>
       <div class="skills">Budgeting · Financial Forecasting · Notion · Make · Power BI</div>
