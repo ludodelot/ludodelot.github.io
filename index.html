@@ -346,6 +346,16 @@
   .t-card li strong { color: var(--ink); }
   .t-card .skills { margin-top: 10px; font-size: 0.8rem; color: var(--sky); }
   .company-head h3 { margin: 0 0 4px; font-size: 1.1rem; }
+  .company-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #fff; color: #10141c; border: 1px solid rgba(16,20,28,0.08);
+    border-radius: 999px; padding: 6px 20px 6px 6px; margin-bottom: 12px;
+    box-shadow: 0 3px 12px rgba(10,20,40,0.14); font-weight: 800; font-size: 1.02rem;
+  }
+  .company-pill.no-logo { padding-left: 20px; }
+  .company-pill a { color: inherit; }
+  .company-pill-logo { width: 30px; height: 30px; border-radius: 50%; object-fit: contain; background: #fff; padding: 3px; box-shadow: 0 0 0 1px rgba(16,20,28,0.1); }
+  .t-card > .company-pill, .company-head > .company-pill { display: inline-flex; }
   .company-fact { font-size: 0.85rem; color: var(--sky); font-weight: 600; margin-bottom: 2px; }
   .company-total { color: var(--ink-soft); font-size: 0.85rem; margin-bottom: 14px; }
   .role-block { padding-top: 18px; margin-top: 18px; border-top: 1px dashed var(--border); }
@@ -611,8 +621,8 @@
         <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass company-card">
           <div class="company-head">
+            <div class="company-pill"><img class="company-pill-logo" src="https://logo.clearbit.com/lvmh.com" alt="" loading="lazy" onerror="this.parentElement.classList.add('no-logo');this.remove()"><a href="https://www.linkedin.com/company/lvmh">LVMH</a></div>
             <span class="track-label">Luxury / Beauty</span>
-            <h3><img class="co-logo" src="https://logo.clearbit.com/lvmh.com" alt="" loading="lazy" onerror="this.style.display='none'"><a href="https://www.linkedin.com/company/lvmh">LVMH</a></h3>
             <div class="company-fact">Europe's largest company by market capitalization</div>
             <div class="company-total">Feb 2025 – present · 1 year 8 months, Mexico → France (remote) → Madrid, Spain</div>
           </div>
@@ -658,8 +668,8 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
+          <div class="company-pill"><img class="company-pill-logo" src="https://logo.clearbit.com/liverpool.com.mx" alt="" loading="lazy" onerror="this.parentElement.classList.add('no-logo');this.remove()"><a href="https://www.linkedin.com/company/elpuertodeliverpool">El Puerto de Liverpool</a></div>
           <span class="track-label">Retail</span>
-          <h3><img class="co-logo" src="https://logo.clearbit.com/liverpool.com.mx" alt="" loading="lazy" onerror="this.style.display='none'"><a href="https://www.linkedin.com/company/elpuertodeliverpool">El Puerto de Liverpool</a></h3>
           <div class="company-fact">~€10B+ annual revenue, Mexico's largest department store group</div>
           <h4 style="margin:6px 0 2px;font-size:1rem;">Automation Business Analyst</h4>
           <div class="meta">Digital Center of Excellence, Finance · Mexico City · Aug 2024 – Feb 2025</div>
@@ -675,8 +685,8 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
+          <div class="company-pill"><img class="company-pill-logo" src="https://logo.clearbit.com/groupeseb.com" alt="" loading="lazy" onerror="this.parentElement.classList.add('no-logo');this.remove()"><a href="https://www.linkedin.com/company/groupe-seb">Groupe SEB</a></div>
           <span class="track-label">Consumer Goods</span>
-          <h3><img class="co-logo" src="https://logo.clearbit.com/groupeseb.com" alt="" loading="lazy" onerror="this.style.display='none'"><a href="https://www.linkedin.com/company/groupe-seb">Groupe SEB</a></h3>
           <div class="company-fact">€8B+ in global sales, world leader in small domestic equipment</div>
           <h4 style="margin:6px 0 2px;font-size:1rem;">National CPFR Supply Chain Data Analyst</h4>
           <div class="meta">Second-largest client in mass retail · Mexico City (Hybrid) · Feb 2024 – Aug 2024</div>
@@ -692,7 +702,7 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-briefcase"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label"><a href="https://www.linkedin.com/school/tecdemonterrey/" style="color:inherit">EGADE Business School</a> · Tec de Monterrey</span>
+          <div class="company-pill"><img class="company-pill-logo" src="https://logo.clearbit.com/tec.mx" alt="" loading="lazy" onerror="this.parentElement.classList.add('no-logo');this.remove()"><a href="https://www.linkedin.com/school/tecdemonterrey/">EGADE Business School, Tec de Monterrey</a></div>
           <h3>Data Analyst Intern</h3>
           <div class="meta">Faculty and Research Intelligence Division · Mexico City · Aug 2024 – Dec 2024</div>
           <ul>
@@ -714,7 +724,8 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <h3>Founder — <a href="https://www.instagram.com/delot_/">Delot Media</a></h3>
+          <div class="company-pill no-logo"><a href="https://www.instagram.com/delot_/">Delot Media</a></div>
+          <h3>Founder</h3>
           <div class="meta">Mexico City · Aug 2019 – present · 5+ years</div>
           <ul>
             <li>I've served <strong>160+ clients</strong>, including brands with a combined 350,000+ followers across Instagram and Facebook.</li>
@@ -729,7 +740,8 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">Tomorrowland — Lab of Tomorrow</span>
+          <div class="company-pill"><img class="company-pill-logo" src="https://logo.clearbit.com/tomorrowland.com" alt="" loading="lazy" onerror="this.parentElement.classList.add('no-logo');this.remove()"><a href="https://be.linkedin.com/company/tomorrowland">Tomorrowland</a></div>
+          <span class="track-label">Lab of Tomorrow</span>
           <h3>Content Marketing Producer</h3>
           <div class="meta">Boom, Belgium · On-site · Jul 2026 (2 weeks)</div>
           <ul>
@@ -744,7 +756,7 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label"><a href="https://www.linkedin.com/company/coparmexnacional" style="color:inherit">Coparmex</a></span>
+          <div class="company-pill no-logo"><a href="https://www.linkedin.com/company/coparmexnacional">Coparmex</a></div>
           <h3>Marketing &amp; Communications Coordinator</h3>
           <div class="meta">COPARMEX University Chapter, ITESM · Mexico City · Dec 2024 – Aug 2025</div>
           <ul><li>I collaborated directly with the President and Vice President on strategic initiatives, aligned with Tec de Monterrey's ranking as the #1 university in Mexico (QS World University Rankings 2024).</li></ul>
@@ -755,8 +767,8 @@
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass company-card">
           <div class="company-head">
+            <div class="company-pill no-logo">Piso 40</div>
             <span class="track-label">Restaurant / Hospitality</span>
-            <h3>Piso 40</h3>
             <div class="company-total">Jan 2024 – May 2025 · 1 year 5 months, Mexico City</div>
           </div>
           <div class="role-block">
@@ -779,8 +791,8 @@
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass company-card">
           <div class="company-head">
+            <div class="company-pill"><img class="company-pill-logo" src="https://logo.clearbit.com/livenation.com" alt="" loading="lazy" onerror="this.parentElement.classList.add('no-logo');this.remove()"><a href="https://www.linkedin.com/company/live-nation">Live Nation</a> / <a href="https://www.linkedin.com/company/ocesa">OCESA</a></div>
             <span class="track-label">Festival &amp; Concert Business Unit</span>
-            <h3><img class="co-logo" src="https://logo.clearbit.com/livenation.com" alt="" loading="lazy" onerror="this.style.display='none'"><a href="https://www.linkedin.com/company/live-nation">Live Nation Entertainment</a> / <a href="https://www.linkedin.com/company/ocesa">OCESA</a></h3>
             <div class="company-fact">World's largest live entertainment company</div>
             <div class="company-total">Feb 2023 – Mar 2025 · 2 years 2 months, Mexico City</div>
           </div>
@@ -815,7 +827,8 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">EDC México · Freelance</span>
+          <div class="company-pill no-logo">EDC México</div>
+          <span class="track-label">Freelance</span>
           <h3>Content Manager, Artist Crew Member &amp; Freelance Producer</h3>
           <div class="meta">Mexico City · Feb 2024, Feb 2025</div>
           <ul>
@@ -830,7 +843,8 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">Polymath 360 · Freemium Studios</span>
+          <div class="company-pill no-logo">Polymath 360</div>
+          <span class="track-label">Freemium Studios</span>
           <h3>Marketing Assistant — Cosmos México</h3>
           <div class="meta">Mexico City · Dec 2024</div>
           <ul>
@@ -844,8 +858,8 @@
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass company-card">
           <div class="company-head">
-            <span class="track-label"><a href="https://www.linkedin.com/school/tecdemonterrey/" style="color:inherit">Tecnológico de Monterrey</a></span>
-            <h3><img class="co-logo" src="https://logo.clearbit.com/tec.mx" alt="" loading="lazy" onerror="this.style.display='none'">Digital Marketing &amp; Content roles</h3>
+            <div class="company-pill"><img class="company-pill-logo" src="https://logo.clearbit.com/tec.mx" alt="" loading="lazy" onerror="this.parentElement.classList.add('no-logo');this.remove()"><a href="https://www.linkedin.com/school/tecdemonterrey/">Tecnológico de Monterrey</a></div>
+            <span class="track-label">Digital Marketing &amp; Content roles</span>
             <div class="company-fact">#1 university in Mexico, Top 5 in Latin America (QS 2024)</div>
             <div class="company-total">Aug 2022 – Dec 2024, Mexico City</div>
           </div>
@@ -878,7 +892,8 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">Fundación Casa Wabi AC · for Vogue México</span>
+          <div class="company-pill no-logo">Fundación Casa Wabi AC</div>
+          <span class="track-label">for Vogue México</span>
           <h3>Digital Marketing Project Assistant</h3>
           <div class="meta">Mexico City · Oct 2024</div>
           <ul><li>I provided video and photo coverage for Vogue México and Casa Wabi's 10th-anniversary event, leading the video strategy for social media coverage.</li></ul>
@@ -888,7 +903,7 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">NOMADA</span>
+          <div class="company-pill no-logo">NOMADA</div>
           <h3>Digital Marketing Project Assistant</h3>
           <div class="meta">Mexico City · Sep 2024</div>
           <ul><li>I led the full video content production for a jewelry brand's latest collection, using Premiere Pro for advanced editing, color correction and sound design.</li></ul>
@@ -899,7 +914,7 @@
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass company-card">
           <div class="company-head">
-            <span class="track-label">Emergente Creative Studio</span>
+            <div class="company-pill no-logo">Emergente Creative Studio</div>
             <h3>Media Producer &amp; Content Marketing Intern</h3>
             <div class="company-total">Aug 2023 – Mar 2024 · 8 months, Mexico City</div>
           </div>
@@ -919,7 +934,7 @@
       <div class="t-item">
         <div class="t-dot"><svg class="icon"><use href="#i-camera"/></svg></div>
         <div class="t-card glass">
-          <span class="track-label">Biointellectus</span>
+          <div class="company-pill no-logo">Biointellectus</div>
           <h3>Marketing Winter Intern</h3>
           <div class="meta">Mexico City · Dec 2023 – Jan 2024</div>
           <ul><li>I conducted consumer-behavior market research on sustainable, biodegradable packaging in the confectionery market, presenting findings on brand image and consumer loyalty to key stakeholders.</li></ul>
